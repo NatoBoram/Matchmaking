@@ -1,4 +1,4 @@
---[[ Helper 1.2.1
+--[[ Helper
 		by Nato Boram
 		
 	Summary
@@ -24,24 +24,29 @@
 		
 	Official Topic Link : http://forum.botoflegends.com/topic/55691-/
 	Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
-	Special thanks to Script Status : http://scriptstatus.net/
 ]]
+
+local VERSION = 1.3
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK") 
 
 local SAFE = 7
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load	
+
+	local ROOT = GetCurrentEnv() and GetCurrentEnv().FILE_NAME or ""
+	os.executePowerShellAsync([[Invoke-WebRequest https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua -UseBasicParsing -OutFile ]]..ROOT..[[;exit;]])
+
 	Helper = scriptConfig("Helper", "Helper")
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONOFF, true)
-	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, false, GetKey("M"))
+	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("M"))
 	Helper:addParam("DrawRange", "Draw Range", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("DrawTargets", "Draw Targets", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("Debug", "Debug", SCRIPT_PARAM_ONOFF, false)
 	Helper:addParam("SafeMode", "Safe Mode", SCRIPT_PARAM_ONOFF, true)
 	
-	PrintChat("Helper loaded.")
+	PrintChat(">> Helper "..VERSION.." Loaded")
 end
 ------------------------------ OnTick Callback ------------------------------
 function OnTick()
@@ -157,6 +162,7 @@ function MaxRange()
 		and myHero.charName ~= "Lux"
 		and myHero.charName ~= "Nami"
 		and myHero.charName ~= "Pantheon"
+		and myHero.charName ~= "Rengar"
 		and myHero.charName ~= "Sivir"
 		then RANGE = math.max(RANGE, Range("R")) end
 	
@@ -1206,6 +1212,10 @@ function Harass() -- For Manaless Champions
 		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Battle Roar") end
+		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+			myHero:Attack(SelectTarget(Range("Q")))
+			CastSpell(SPELL_1)
+			if Helper.Debug then PrintChat("Savagery") end
 		end
 	-- Riven
 	elseif myHero.charName == "Riven" then
@@ -1255,7 +1265,7 @@ function Harass() -- For Manaless Champions
 		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
 			CastSpell(SPELL_1, SelectTarget(Range("Q")))
 			if Helper.Debug then PrintChat("Decrepify") end
-		elseif myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil and not myHero:CanUseSpell(SPELL_1) == READY then
+		elseif myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("Q")) ~= nil then
 			CastSpell(SPELL_2, SelectTarget(Range("W")).x, SelectTarget(Range("W")).z)
 			if Helper.Debug then PrintChat("Nevermove") end
 		end
@@ -1274,6 +1284,9 @@ function Harass() -- For Manaless Champions
 		if myHero:CanUseSpell(SPELL_4) == READY and SelectTarget(Range("R")) ~= nil then
 			CastSpell(SPELL_4, SelectTarget(Range("R")).x, SelectTarget(Range("R")).z)
 			if Helper.Debug then PrintChat("Noxious Trap") end
+		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+			CastSpell(SPELL_4, SelectTarget(Range("Q")))
+			if Helper.Debug then PrintChat("Blinding Dart") end
 		end
 	-- Vladimir
 	elseif myHero.charName == "Vladimir" then
