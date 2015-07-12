@@ -35,7 +35,11 @@ local SAFE = 7
 function OnLoad() -- On Load	
 
 	local ROOT = GetCurrentEnv().FILE_NAME
-	os.executePowerShellAsync([[Invoke-WebRequest https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua -UseBasicParsing -OutFile ]]..BOL_PATH..ROOT..[[;exit;]])
+	os.executePowerShellAsync([[
+		$webClient = New-Object System.Net.WebClient;
+		$webClient.DownloadFile('https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua', ']]..SCRIPT_PATH..ROOT..[[');
+		exit;
+	]])
 
 	Helper = scriptConfig("Helper", "Helper")
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
@@ -1274,9 +1278,9 @@ function Harass() -- For Manaless Champions
 		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
 			CastSpell(SPELL_2, SelectTarget(Range("W")).x, SelectTarget(Range("W")).z)
 			if Helper.Debug then PrintChat("Rake") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget() ~= nil then
-			CastSpell(SPELL_1)
+		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
 			myHero:Attack(SelectTarget(Range("Q")))
+			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Noxian Diplomacy") end
 		end
 	-- Teemo
