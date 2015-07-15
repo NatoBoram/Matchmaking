@@ -26,7 +26,7 @@
 	Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4"
+local VERSION = "1.4.1"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK") 
 
@@ -95,6 +95,7 @@ function OnApplyBuff(source, target, buff)
 			regenerationpotion = true
 		end
 	end
+	if Helper.Debug and source.isMe and myHero.type == target.type then PrintChat("+ "..source.charName.." | "..target.charName.." | "..buff.name) end
 end
 function OnRemoveBuff(unit, buff)
 	if unit and buff then
@@ -105,6 +106,7 @@ function OnRemoveBuff(unit, buff)
 			regenerationpotion = false
 		end
 	end
+	if Helper.Debug and unit.isMe then PrintChat("+ "..unit.charName.." | "..buff.name) end
 end
 
 function OnUpdateBuff(unit, buff, stacks)
@@ -116,7 +118,7 @@ function Drink() -- Auto Potions
 	
 	if GetInventorySlotItem(2041) ~= nil then
 		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2041)) and (myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4) and ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100)) then
+		if myHero:CanUseSpell(GetInventorySlotItem(2041)) == READY and (myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4) and ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100)) then
 			-- Cast
 			CastSpell(GetInventorySlotItem(2041))
 			if Helper.Debug then PrintChat("Crystalline Flask") end
@@ -125,7 +127,7 @@ function Drink() -- Auto Potions
 	-- Health Potions
 	if GetInventorySlotItem(2003) ~= nil then
 		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2003)) and myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2003)).stacks / 6 and myHero.maxHealth - myHero.health > 150 then
+		if myHero:CanUseSpell(GetInventorySlotItem(2003)) == READY and myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2003)).stacks / 6 and myHero.maxHealth - myHero.health > 150 then
 			-- Cast
 			CastSpell(GetInventorySlotItem(2003))
 			if Helper.Debug then PrintChat("Health Potion") end
@@ -134,7 +136,7 @@ function Drink() -- Auto Potions
 	-- Mana Potions
 	if GetInventorySlotItem(2004) ~= nil then
 		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2004)) and myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2004)).stacks / 6 and myHero.maxMana - myHero.mana > 100 or myHero.mana < 100 then
+		if myHero:CanUseSpell(GetInventorySlotItem(2004)) == READY and myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2004)).stacks / 6 and myHero.maxMana - myHero.mana > 100 or myHero.mana < 100 then
 			-- Cast
 			CastSpell(GetInventorySlotItem(2004))
 			if Helper.Debug then PrintChat("Mana Potion") end
@@ -1253,17 +1255,18 @@ function Harass() -- For Manaless Champions
 	-- Riven
 	elseif myHero.charName == "Riven" then
 		if ValidTarget(GetTarget()) and myHero.team ~= GetTarget().team and GetTarget().type == myHero.type then
-			if GetInventorySlotItem(3077) ~= nil then 
-				if myHero:CanUseSpell(GetInventorySlotItem(3077)) == READY and myHero:GetDistance(GetTarget()) < myHero.range and rivenpassiveaaboost == false then
-					CastSpell(GetInventorySlotItem(3077))
-					if Helper.Debug then PrintChat("Tiamat") end
-				end
-			elseif myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(GetTarget()) < Range("E") and rivenpassiveaaboost == false then
+			if myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(GetTarget()) < Range("E") and rivenpassiveaaboost == false then
 				CastSpell(SPELL_3, GetTarget().x, GetTarget().z)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
 				if Helper.Debug then PrintChat("Valor") end
 			elseif myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(GetTarget()) < Range("W") and rivenpassiveaaboost == false then
+				if GetInventorySlotItem(3077) ~= nil then 
+					if myHero:CanUseSpell(GetInventorySlotItem(3077)) == READY then
+						CastSpell(GetInventorySlotItem(3077))
+						if Helper.Debug then PrintChat("Tiamat") end
+					end
+				end
 				CastSpell(SPELL_2)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
