@@ -26,7 +26,7 @@
 	Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4.1"
+local VERSION = "1.4.2"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK") 
 
@@ -1116,8 +1116,11 @@ function OneCombo(target)
 end
 ------------------------------ Harass ------------------------------
 function Harass() -- For Manaless Champions
-
 	if myHero.isStealthed then return end
+	local TargetQ = SelectTarget(Range("Q"))
+	local TargetW = SelectTarget(Range("W"))
+	local TargetE = SelectTarget(Range("E"))
+	local TargetR = SelectTarget(Range("R"))
 
 	--[[ Items
 	-- Tiamat
@@ -1158,59 +1161,59 @@ function Harass() -- For Manaless Champions
 	if myHero.charName == nil then
 	-- Ahri
 	elseif myHero.charName == "Ahri" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Fox-Fire") end
 		end
 	-- Akali
 	elseif myHero.charName == "Akali" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Mark of the Assassin") end
-		elseif myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
 			CastSpell(SPELL_3)
 			if Helper.Debug then PrintChat("Crescent Slash") end
 		end
 	-- Diana
 	elseif myHero.charName == "Diana" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Pale Cascade") end
-		elseif myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil and myHero:CanUseSpell(SPELL_4) == COOLDOWN then
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil and myHero:CanUseSpell(SPELL_4) == COOLDOWN then
 			CastSpell(SPELL_3)
 			if Helper.Debug then PrintChat("Moonfall") end
 		end
 	-- Gangplank
 	elseif myHero.charName == "Gangplank" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Parrrley") end
 		end
 	-- Hecarim
 	elseif myHero.charName == "Hecarim" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Rampage") end
 		end
 	-- Katarina
 	elseif myHero.charName == "Katarina" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Bouncing Blade") end
-		elseif myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		elseif myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Sinister Steel") end
 		end
 	-- Kha'Zix
 	elseif myHero.charName == "KhaZix" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Taste Their Fear") end
 		end
 	-- Lissandra
 	elseif myHero.charName == "Lissandra" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")).x, SelectTarget(Range("Q")).z)
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ.x, TargetQ.z)
 			if Helper.Debug then PrintChat("Ice Shard") end
 		end
 	-- Maokai
@@ -1221,34 +1224,34 @@ function Harass() -- For Manaless Champions
 		end
 	-- Master Yi
 	elseif myHero.charName == "MasterYi" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Alpha Strike") end
-		elseif myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
 			CastSpell(SPELL_3)
 			if Helper.Debug then PrintChat("Wuju Style") end
-		elseif myHero.canAttack and SelectTarget(Range("Q")) ~= nil and GetTickCount() % SAFE == 0 then
-			myHero:Attack(SelectTarget(Range("Q")))
+		elseif myHero.canAttack and TargetQ ~= nil and GetTickCount() % SAFE == 0 then
+			myHero:Attack(TargetQ)
 		end
 	-- Mordekaiser
 	elseif myHero.charName == "Mordekaiser" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Mace of Spades") end
-		elseif myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		elseif myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2, myHero)
 			if Helper.Debug then PrintChat("Creeping Death") end
-		elseif myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
-			CastSpell(SPELL_3, SelectTarget(Range("E")).x, SelectTarget(Range("E")).z)
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
+			CastSpell(SPELL_3, TargetE.x, TargetE.z)
 			if Helper.Debug then PrintChat("Siphon of Destruction") end
 		end
 	-- Rengar
 	elseif myHero.charName == "Rengar" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Battle Roar") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			myHero:Attack(SelectTarget(Range("Q")))
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			myHero:Attack(TargetQ)
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Savagery") end
 		end
@@ -1280,94 +1283,107 @@ function Harass() -- For Manaless Champions
 		end
 	-- Ryze
 	elseif myHero.charName == "Ryze" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
-			CastSpell(SPELL_2, SelectTarget(Range("W")))
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
+			CastSpell(SPELL_2, TargetW)
 			if Helper.Debug then PrintChat("Rune Prison") end
-		elseif myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
-			CastSpell(SPELL_3, SelectTarget(Range("E")))
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
+			CastSpell(SPELL_3, TargetE)
 			if Helper.Debug then PrintChat("Spell Flux") end
 		end
 	-- Shen
 	elseif myHero.charName == "Shen" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Vorpal Blade") end
+		end
+	-- Shyvana
+	elseif myHero.charName == "Shyvana" then
+		if myHero:CanUseSpell(SPELL_3) == READY and TargetW ~= nil then
+			CastSpell(SPELL_3, TargetE.x, TargetE.z)
+			if Helper.Debug then PrintChat("Flame Breath") end
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
+			CastSpell(SPELL_2)
+			if Helper.Debug then PrintChat("Burnout") end
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			myHero:Attack(TargetQ)
+			CastSpell(SPELL_1)
+			if Helper.Debug then PrintChat("Twins Bite") end
 		end
 	-- Sivir
 	elseif myHero.charName == "Sivir" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil and myHero.mana / myHero.maxMana > myHero.health / myHero.maxHealth then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil and myHero.mana / myHero.maxMana > myHero.health / myHero.maxHealth then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Ricochet") end
 		end
 	-- Skarner
 	elseif myHero.charName == "Skarner" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Crystal Slash") end
 		end
 	-- Sona
 	elseif myHero.charName == "Sona" then
-		if myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
 			CastSpell(SPELL_1)
-			myHero:Attack(SelectTarget(Range("Q")))
+			myHero:Attack(TargetQ)
 			if Helper.Debug then PrintChat("Hymn of Valor") end
 		end
 	-- Swain
 	elseif myHero.charName == "Swain" then
-		if myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
-			CastSpell(SPELL_3, SelectTarget(Range("E")))
+		if myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
+			CastSpell(SPELL_3, TargetE)
 			if Helper.Debug then PrintChat("Torment") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Decrepify") end
-		elseif myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_2, SelectTarget(Range("W")).x, SelectTarget(Range("W")).z)
+		elseif myHero:CanUseSpell(SPELL_2) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_2, TargetW.x, TargetW.z)
 			if Helper.Debug then PrintChat("Nevermove") end
 		end
 	-- Talon
 	elseif myHero.charName == "Talon" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
-			CastSpell(SPELL_2, SelectTarget(Range("W")).x, SelectTarget(Range("W")).z)
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
+			CastSpell(SPELL_2, TargetW.x, TargetW.z)
 			if Helper.Debug then PrintChat("Rake") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			myHero:Attack(SelectTarget(Range("Q")))
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			myHero:Attack(TargetQ)
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Noxian Diplomacy") end
 		end
 	-- Teemo
 	elseif myHero.charName == "Teemo" then
-		if myHero:CanUseSpell(SPELL_4) == READY and SelectTarget(Range("R")) ~= nil then
-			CastSpell(SPELL_4, SelectTarget(Range("R")).x, SelectTarget(Range("R")).z)
+		if myHero:CanUseSpell(SPELL_4) == READY and TargetR ~= nil then
+			CastSpell(SPELL_4, TargetR.x, TargetR.z)
 			if Helper.Debug then PrintChat("Noxious Trap") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_4, SelectTarget(Range("Q")))
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_4, TargetQ)
 			if Helper.Debug then PrintChat("Blinding Dart") end
 		end
 	-- Vladimir
 	elseif myHero.charName == "Vladimir" then
-		if myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
+		if myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
 			CastSpell(SPELL_3)
 			if Helper.Debug then PrintChat("Tides of Blood") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and SelectTarget(Range("Q")) ~= nil then
-			CastSpell(SPELL_1, SelectTarget(Range("Q")))
+		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ)
 			if Helper.Debug then PrintChat("Transfusion") end
 		end
 	-- Yasuo
 	elseif myHero.charName == "Yasuo" then
-		local target = SelectTarget(Range("Q"))
+		local target = TargetQ
 		if myHero:CanUseSpell(SPELL_1) == READY and target ~= nil then
 			CastSpell(SPELL_1, target.x, target.z)
 			if Helper.Debug then PrintChat("Steel Tempest") end
 		end
 	-- Zac
 	elseif myHero.charName == "Zac" then
-		if myHero:CanUseSpell(SPELL_2) == READY and SelectTarget(Range("W")) ~= nil then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
 			CastSpell(SPELL_2)
 			if Helper.Debug then PrintChat("Unstable Matter") end
 		end
 	-- Zed
 	elseif myHero.charName == "Zed" then
-		if myHero:CanUseSpell(SPELL_3) == READY and SelectTarget(Range("E")) ~= nil then
+		if myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
 			CastSpell(SPELL_3)
 			if Helper.Debug then PrintChat("Shadow Slash") end
 		end
