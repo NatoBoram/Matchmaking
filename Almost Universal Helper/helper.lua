@@ -4,18 +4,24 @@
 	Summary
 		Callbacks
 			OnLoad
+			OnUnload
 			OnTick
 			OnDraw
+			OnApplyBuff
+			OnRemoveBuff
+			OnUpdateBuff -- Useless
 		Core
 			Drink
 		Calculations
 			Select Lowest Target
 			Range Library
 			Maximum Range
-			Critical Strike
+			Critical Strike -- Unused
 			On Hit Effects
 			One Combo
 		Functions
+			Drink
+			CastItem
 			Harass
 			Kill Secure
 	
@@ -26,15 +32,14 @@
 	Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4.3"
+local VERSION = "1.4.5"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK") 
 
 local SAFE = 7
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load	
-
-	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	--DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	
 	Helper = scriptConfig("Helper", "Helper")
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
@@ -44,8 +49,11 @@ function OnLoad() -- On Load
 	Helper:addParam("DrawTargets", "Draw Targets", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("Debug", "Debug", SCRIPT_PARAM_ONOFF, false)
 	Helper:addParam("SafeMode", "Safe Mode", SCRIPT_PARAM_ONOFF, true)
-	
 	PrintChat(">> Helper "..VERSION.." Loaded")
+	SendChat("/l")
+end
+function OnUnload()
+	SendChat("/l")
 end
 ------------------------------ OnTick Callback ------------------------------
 function OnTick()
@@ -84,64 +92,39 @@ function OnDraw()
 end
 ------------------------------ Buff Callback ------------------------------
 rivenpassiveaaboost = false
-regenerationpotion = false
+RevenerationPotion = false
+rivenwindslashready = false
 
 function OnApplyBuff(source, target, buff)
 	if source and target and buff then
 		if source.isMe and buff.name == "rivenpassiveaaboost" then
 			rivenpassiveaaboost = true
 		end
-		if source.isMe and buff.name == "regenerationpotion" then
-			regenerationpotion = true
+		if source.isMe and buff.name == "RevenerationPotion" then
+			RevenerationPotion = true
+		end
+		if source.isMe and buff.name == "rivenwindslashready" then
+			rivenwindslashready = true
 		end
 	end
-	if Helper.Debug and source.isMe and myHero.type == target.type then PrintChat("+ "..source.charName.." | "..target.charName.." | "..buff.name) end
+	-- if Helper.Debug and source.isMe and myHero.type == target.type then PrintChat("+ "..source.charName.." | "..target.charName.." | "..buff.name) end
 end
 function OnRemoveBuff(unit, buff)
 	if unit and buff then
 		if unit.isMe and buff.name == "rivenpassiveaaboost" then
 			rivenpassiveaaboost = false
 		end
-		if unit.isMe and buff.name == "regenerationpotion" then
-			regenerationpotion = false
+		if unit.isMe and buff.name == "RevenerationPotion" then
+			RevenerationPotion = false
+		end
+		if unit.isMe and buff.name == "rivenwindslashready" then
+			rivenwindslashready = false
 		end
 	end
-	if Helper.Debug and unit.isMe then PrintChat("+ "..unit.charName.." | "..buff.name) end
+	-- if Helper.Debug and unit.isMe then PrintChat("- "..unit.charName.." | "..buff.name) end
 end
-
 function OnUpdateBuff(unit, buff, stacks)
 	if not unit or not buff then return end
-end
------------------------------- Drink ------------------------------
-function Drink() -- Auto Potions
-	-- Crystalline Flash
-	
-	if GetInventorySlotItem(2041) ~= nil then
-		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2041)) == READY and (myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2041)).stacks / 4) and ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100)) then
-			-- Cast
-			CastSpell(GetInventorySlotItem(2041))
-			if Helper.Debug then PrintChat("Crystalline Flask") end
-		end
-	end
-	-- Health Potions
-	if GetInventorySlotItem(2003) ~= nil then
-		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2003)) == READY and myHero.health / myHero.maxHealth < myHero:getItem(GetInventorySlotItem(2003)).stacks / 6 and myHero.maxHealth - myHero.health > 150 then
-			-- Cast
-			CastSpell(GetInventorySlotItem(2003))
-			if Helper.Debug then PrintChat("Health Potion") end
-		end
-	end
-	-- Mana Potions
-	if GetInventorySlotItem(2004) ~= nil then
-		-- Conditions
-		if myHero:CanUseSpell(GetInventorySlotItem(2004)) == READY and myHero.mana / myHero.maxMana < myHero:getItem(GetInventorySlotItem(2004)).stacks / 6 and myHero.maxMana - myHero.mana > 100 or myHero.mana < 100 then
-			-- Cast
-			CastSpell(GetInventorySlotItem(2004))
-			if Helper.Debug then PrintChat("Mana Potion") end
-		end
-	end
 end
 ------------------------------ Select Lowest Target in Range ------------------------------
 function SelectTarget(Range)
@@ -157,46 +140,6 @@ function SelectTarget(Range)
 		end
 	end
 	return target
-end
------------------------------- Maximum Range for Kill Secure ------------------------------
-function MaxRange()
-	local RANGE = 0
-	
-	if myHero.canAttack then RANGE = math.max(RANGE, myHero.range) end
-	if myHero.CanAttack then RANGE = math.max(RANGE, Range("P")) end
-
-	if myHero:CanUseSpell(SPELL_1) == READY
-		then RANGE = math.max(RANGE, Range("Q")) end
-	
-	if myHero:CanUseSpell(SPELL_2) == READY
-		and myHero.charName ~= "Akali"
-		and myHero.charName ~= "Kalista"
-		and myHero.charName ~= "MasterYi"
-		then RANGE = math.max(RANGE, Range("W")) end
-	
-	if myHero:CanUseSpell(SPELL_3) == READY
-		and myHero.charName ~= "Ashe"
-		and myHero.charName ~= "Sivir"
-		then RANGE = math.max(RANGE, Range("E")) end
-	
-	if myHero:CanUseSpell(SPELL_4) == READY
-		and myHero.charName ~= "Ashe"
-		and myHero.charName ~= "Caitlyn"
-		and myHero.charName ~= "Draven"
-		and myHero.charName ~= "Ezreal"
-		and myHero.charName ~= "Gangplank"
-		and myHero.charName ~= "Jinx"
-		and myHero.charName ~= "Karthus"
-		and myHero.charName ~= "KogMaw"
-		and myHero.charName ~= "Lucian"
-		and myHero.charName ~= "Lux"
-		and myHero.charName ~= "Nami"
-		and myHero.charName ~= "Pantheon"
-		and myHero.charName ~= "Rengar"
-		and myHero.charName ~= "Sivir"
-		then RANGE = math.max(RANGE, Range("R")) end
-	
-	return RANGE
 end
 ------------------------------ Range Library ------------------------------
 function Range(Spell) -- Yes, it is incomplete. I don't even use some of these values.
@@ -937,6 +880,46 @@ function Range(Spell) -- Yes, it is incomplete. I don't even use some of these v
 	end
 	return 0
 end
+------------------------------ Maximum Range for Kill Secure ------------------------------
+function MaxRange()
+	local RANGE = 0
+	
+	if myHero.canAttack then RANGE = math.max(RANGE, myHero.range) end
+	if myHero.CanAttack then RANGE = math.max(RANGE, Range("P")) end
+
+	if myHero:CanUseSpell(SPELL_1) == READY
+		then RANGE = math.max(RANGE, Range("Q")) end
+	
+	if myHero:CanUseSpell(SPELL_2) == READY
+		and myHero.charName ~= "Akali"
+		and myHero.charName ~= "Kalista"
+		and myHero.charName ~= "MasterYi"
+		then RANGE = math.max(RANGE, Range("W")) end
+	
+	if myHero:CanUseSpell(SPELL_3) == READY
+		and myHero.charName ~= "Ashe"
+		and myHero.charName ~= "Sivir"
+		then RANGE = math.max(RANGE, Range("E")) end
+	
+	if myHero:CanUseSpell(SPELL_4) == READY
+		and myHero.charName ~= "Ashe"
+		and myHero.charName ~= "Caitlyn"
+		and myHero.charName ~= "Draven"
+		and myHero.charName ~= "Ezreal"
+		and myHero.charName ~= "Gangplank"
+		and myHero.charName ~= "Jinx"
+		and myHero.charName ~= "Karthus"
+		and myHero.charName ~= "KogMaw"
+		and myHero.charName ~= "Lucian"
+		and myHero.charName ~= "Lux"
+		and myHero.charName ~= "Nami"
+		and myHero.charName ~= "Pantheon"
+		and myHero.charName ~= "Rengar"
+		and myHero.charName ~= "Sivir"
+		then RANGE = math.max(RANGE, Range("R")) end
+	
+	return RANGE
+end
 ------------------------------ Critical Strike ------------------------------
 function CanCrit(damage)
 	return (damage * myHero.critChance * myHero.critDmg)
@@ -1057,10 +1040,10 @@ function OneCombo(target)
 		return DAMAGE
 	
 	elseif myHero.charName == "Riven" then -- REWQ
-		if myHero:CanUseSpell(SPELL_1) == READY then DAMAGE = DAMAGE + getDmg("Q", target, myHero) end
-		if myHero:CanUseSpell(SPELL_2) == READY then DAMAGE = DAMAGE + getDmg("W", target, myHero) end
-		if myHero:CanUseSpell(SPELL_3) == READY then DAMAGE = DAMAGE + getDmg("E", target, myHero) end
-		if myHero:CanUseSpell(SPELL_4) == READY then DAMAGE = DAMAGE + getDmg("R", target, myHero) end
+		if myHero:CanUseSpell(SPELL_1) == READY then DAMAGE = DAMAGE + 3 * getDmg("Q", target, myHero) + 3 * getDmg("AD", target, myHero) + 3 * OnHit(target) + 3 * getDmg("P", target, myHero) end
+		if myHero:CanUseSpell(SPELL_2) == READY then DAMAGE = DAMAGE + getDmg("W", target, myHero) + getDmg("AD", target, myHero) + OnHit(target) end
+		if myHero:CanUseSpell(SPELL_3) == READY then DAMAGE = DAMAGE + getDmg("E", target, myHero) + getDmg("AD", target, myHero) + OnHit(target) + getDmg("P", target, myHero) end
+		if myHero:CanUseSpell(SPELL_4) == READY then DAMAGE = DAMAGE * 1.2 + getDmg("R", target, myHero, 2) + getDmg("AD", target, myHero) + OnHit(target) + getDmg("P", target, myHero) end
 		return DAMAGE
 		
 	elseif myHero.charName == "Sivir" then -- Q
@@ -1114,48 +1097,58 @@ function OneCombo(target)
 		
 	end
 end
+------------------------------ Drink ------------------------------
+function Drink() -- Auto Potions
+	for SLOT = ITEM_1, ITEM_6 do
+	-- if Helper.Debug then PrintChat("ITEM : "..myHero:GetSpellData(SLOT).name) end
+		-- Crystalline Flash
+		if myHero:GetSpellData(SLOT).name == "ItemCrystalFlask" then
+			-- Conditions
+			if myHero:CanUseSpell(SLOT) == READY and (myHero.health / myHero.maxHealth < getItem(SLOT).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(SLOT).stacks / 4) and ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100)) then
+				-- Cast
+				CastSpell(SLOT)
+				if Helper.Debug then PrintChat("Crystalline Flask") end
+			end
+		end
+		-- Health Potions
+		if myHero:GetSpellData(SLOT).name == "RegenerationPotion" and not RevenerationPotion then
+			-- Conditions
+			if myHero:CanUseSpell(SLOT) == READY and myHero.health / myHero.maxHealth < myHero:getItem(SLOT).stacks / 6 and myHero.maxHealth - myHero.health > 150 then
+				-- Cast
+				CastSpell(SLOT)
+				if Helper.Debug then PrintChat("Health Potion") end
+			end
+		end
+		-- Mana Potions
+		if myHero:GetSpellData(SLOT).name == "FlaskOfCrystalWater" then
+			-- Conditions
+			if myHero:CanUseSpell(SLOT) == READY and myHero.mana / myHero.maxMana < myHero:getItem(SLOT).stacks / 6 and myHero.maxMana - myHero.mana > 100 or myHero.mana < 100 then
+				-- Cast
+				CastSpell(SLOT)
+				if Helper.Debug then PrintChat("Mana Potion") end
+			end
+		end
+	end
+end
+------------------------------ Cast Item ------------------------------
+function CastItem(ITEM)
+	for SLOT = ITEM_1, ITEM_6 do
+		if myHero:GetSpellData(SLOT).name == ITEM then
+			if myHero:CanUseSpell(SLOT) == READY then
+				CastSpell(SLOT)
+			end
+		end
+	end
+end
 ------------------------------ Harass ------------------------------
 function Harass() -- For Manaless Champions
+	
+	-- Spells
 	if myHero.isStealthed then return end
 	local TargetQ = SelectTarget(Range("Q"))
 	local TargetW = SelectTarget(Range("W"))
 	local TargetE = SelectTarget(Range("E"))
 	local TargetR = SelectTarget(Range("R"))
-
-	--[[ Items
-	-- Tiamat
-		if GetInventorySlotItem(3077) ~= nil and myHero:CanUseSpell(GetInventorySlotItem(3077)) and SelectTarget(myHero.range * 2) ~= nil then
-			CastSpell(GetInventorySlotItem(3077))
-			if Helper.Debug then PrintChat("Tiamat") end
-		end
-	-- Ravenous Hydra
-	if GetInventorySlotItem(3074) ~= nil and myHero:CanUseSpell(GetInventorySlotItem(3074)) and SelectTarget(myHero.range * 2) ~= nil then
-			CastSpell(GetInventorySlotItem(3074))
-			if Helper.Debug then PrintChat("Ravenous Hydra") end
-		end
-	end
-	-- Bilgewater Cutlass
-	if GetInventoryHaveItem(3144, myHero) and SelectTarget(450) ~= nil then
-		if myHero:CanUseSpell(GetInventorySlotItem(3144)) then
-			CastSpell(GetInventorySlotItem(3144), SelectTarget(450))
-			if Helper.Debug then PrintChat("Bilgewater Cutlass") end
-		end
-	end
-	-- Hextech Gunblade
-	if GetInventoryHaveItem(3146, myHero) and SelectTarget(700) ~= nil then
-		if myHero:CanUseSpell(GetInventorySlotItem(3146)) then
-			CastSpell(GetInventorySlotItem(3146), SelectTarget(700))
-			if Helper.Debug then PrintChat("Hextech Gunblade") end
-		end
-	end
-	-- Blade of the Ruined King
-	if GetInventoryHaveItem(3153, myHero) and SelectTarget(450) ~= nil then
-		if myHero:CanUseSpell(GetInventorySlotItem(3153)) then
-			CastSpell(GetInventorySlotItem(3153), SelectTarget(450))
-			if Helper.Debug then PrintChat("Blade of the Ruined King") end
-		end
-	end
-	]]
 	
 	-- Champions
 	if myHero.charName == nil then
@@ -1257,24 +1250,20 @@ function Harass() -- For Manaless Champions
 		end
 	-- Riven
 	elseif myHero.charName == "Riven" then
-		if ValidTarget(GetTarget()) and myHero.team ~= GetTarget().team and GetTarget().type == myHero.type then
-			if myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(GetTarget()) < Range("E") and rivenpassiveaaboost == false then
+		if ValidTarget(GetTarget()) and myHero.team ~= GetTarget().team and GetTarget().type == myHero.type and rivenpassiveaaboost == false then
+			if myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(GetTarget()) < Range("E") then
 				CastSpell(SPELL_3, GetTarget().x, GetTarget().z)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
+				CastItem("YoumusBlade")
 				if Helper.Debug then PrintChat("Valor") end
-			elseif myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(GetTarget()) < Range("W") and rivenpassiveaaboost == false then
-				if GetInventorySlotItem(3077) ~= nil then 
-					if myHero:CanUseSpell(GetInventorySlotItem(3077)) == READY then
-						CastSpell(GetInventorySlotItem(3077))
-						if Helper.Debug then PrintChat("Tiamat") end
-					end
-				end
+			elseif myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(GetTarget()) <= Range("W") then
+				CastItem("ItemTiamatCleave")
 				CastSpell(SPELL_2)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
 				if Helper.Debug then PrintChat("Ki Burst") end
-			elseif myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(GetTarget()) < Range("Q") and rivenpassiveaaboost == false then
+			elseif myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(GetTarget()) < Range("Q") then
 				CastSpell(SPELL_1, GetTarget().x, GetTarget().z)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
@@ -1547,6 +1536,36 @@ function Kill(target)
 			elseif myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(target) < Range("E") then
 				CastSpell(SPELL_3, target)
 				if Helper.Debug then PrintChat("Heartseeker Strike") end
+			end
+		-- Riven
+		elseif myHero.charName == "Riven" and OneCombo(target) > target.health and rivenpassiveaaboost == false then
+			if myHero:CanUseSpell(SPELL_4) == READY and myHero:GetDistance(target) < 400 and not rivenwindslashready then
+				CastItem("ItemTiamatCleave")
+				CastSpell(SPELL_4)
+				myHero:MoveTo(target.x, target.z)
+				myHero:Attack(target)
+				CastItem("YoumusBlade")
+				if Helper.Debug then PrintChat("Blade of the Exile") end
+			elseif myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(target) < Range("E") then
+				CastSpell(SPELL_3, target.x, target.z)
+				myHero:MoveTo(target.x, target.z)
+				myHero:Attack(target)
+				if Helper.Debug then PrintChat("Valor") end
+			elseif myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(target) < Range("W") then
+				CastSpell(SPELL_2)
+				myHero:MoveTo(target.x, target.z)
+				myHero:Attack(target)
+				if Helper.Debug then PrintChat("Ki Burst") end
+			elseif myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(target) < Range("Q") then
+				CastSpell(SPELL_1, target.x, target.z)
+				myHero:MoveTo(target.x, target.z)
+				myHero:Attack(target)
+				if Helper.Debug then PrintChat("Broken Wings") end
+			elseif myHero:CanUseSpell(SPELL_4) == READY and myHero:GetDistance(target) < Range("R") and rivenwindslashready then
+				CastSpell(SPELL_4, target.x, target.z)
+				myHero:MoveTo(target.x, target.z)
+				myHero:Attack(target)
+				if Helper.Debug then PrintChat("Wind Slash") end
 			end
 		-- Sivir
 		elseif myHero.charName == "Sivir" and OneCombo(target) > target.health then
