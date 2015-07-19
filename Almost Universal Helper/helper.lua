@@ -16,7 +16,7 @@
 			Select Lowest Target
 			Range Library
 			Maximum Range
-			Critical Strike -- Unused
+			Critical Strike -- Needs more tests
 			On Hit Effects
 			One Combo
 		Functions
@@ -32,14 +32,14 @@
 	Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4.5"
+local VERSION = "1.4.6"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK") 
 
 local SAFE = 7
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load	
-	--DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	
 	Helper = scriptConfig("Helper", "Helper")
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
@@ -151,7 +151,7 @@ function Range(Spell) -- Yes, it is incomplete. I don't even use some of these v
 	elseif Spell == "E" then test = myHero:GetSpellData(SPELL_3).range
 	elseif Spell == "R" then test = myHero:GetSpellData(SPELL_4).range
 	end
-	if test ~= nil and test ~= 0 and test <= 1200 then return test end
+	if test ~= nil and test > 10 and test <= 1200 then return test end
 
 	-- Backup Library
 	if myHero.charName == nil then return 0
@@ -942,12 +942,6 @@ function OneCombo(target)
 	local DAMAGE = 0
 	
 	-- Items
-	if GetInventoryHaveItem(3077, myHero) then 
-		if myHero:CanUseSpell(GetInventorySlotItem(3077)) == READY then DAMAGE = DAMAGE + getDmg("TIAMAT", target, myHero) end
-	end
-	if GetInventoryHaveItem(3074, myHero) then
-		if myHero:CanUseSpell(GetInventorySlotItem(3074)) == READY then DAMAGE = DAMAGE + getDmg("HYDRA", target, myHero) end
-	end
 	
 	-- Champion
 	if myHero.charName == nil then
@@ -1104,7 +1098,7 @@ function Drink() -- Auto Potions
 		-- Crystalline Flash
 		if myHero:GetSpellData(SLOT).name == "ItemCrystalFlask" then
 			-- Conditions
-			if myHero:CanUseSpell(SLOT) == READY and (myHero.health / myHero.maxHealth < getItem(SLOT).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(SLOT).stacks / 4) and ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100)) then
+			if myHero:CanUseSpell(SLOT) == READY and ((myHero.health / myHero.maxHealth < myHero:getItem(SLOT).stacks / 4 or myHero.mana / myHero.maxMana < myHero:getItem(SLOT).stacks / 4) or ((myHero.maxHealth - myHero.health > 120 and myHero.maxMana - myHero.mana > 60) or (myHero.mana < 100 or myHero.health < 100))) then
 				-- Cast
 				CastSpell(SLOT)
 				if Helper.Debug then PrintChat("Crystalline Flask") end
@@ -1240,30 +1234,34 @@ function Harass() -- For Manaless Champions
 		end
 	-- Rengar
 	elseif myHero.charName == "Rengar" then
-		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
-			CastSpell(SPELL_2)
-			if Helper.Debug then PrintChat("Battle Roar") end
-		elseif myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
 			myHero:Attack(TargetQ)
 			CastSpell(SPELL_1)
 			if Helper.Debug then PrintChat("Savagery") end
+		elseif myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
+			CastSpell(SPELL_2)
+			if Helper.Debug then PrintChat("Battle Roar") end
 		end
 	-- Riven
 	elseif myHero.charName == "Riven" then
 		if ValidTarget(GetTarget()) and myHero.team ~= GetTarget().team and GetTarget().type == myHero.type and rivenpassiveaaboost == false then
 			if myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(GetTarget()) < Range("E") then
+				CastItem("YoumusBlade")
+				CastItem("ItemTiamatCleave")
 				CastSpell(SPELL_3, GetTarget().x, GetTarget().z)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
-				CastItem("YoumusBlade")
 				if Helper.Debug then PrintChat("Valor") end
 			elseif myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(GetTarget()) <= Range("W") then
+				CastItem("YoumusBlade")
 				CastItem("ItemTiamatCleave")
 				CastSpell(SPELL_2)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
 				if Helper.Debug then PrintChat("Ki Burst") end
 			elseif myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(GetTarget()) < Range("Q") then
+				CastItem("YoumusBlade")
+				CastItem("ItemTiamatCleave")
 				CastSpell(SPELL_1, GetTarget().x, GetTarget().z)
 				myHero:MoveTo(GetTarget().x, GetTarget().z)
 				myHero:Attack(GetTarget())
