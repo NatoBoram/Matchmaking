@@ -42,7 +42,7 @@ local SAFE = 7
 function OnLoad() -- On Load
 	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 
-	Helper = scriptConfig("Helper", "Helper "..VERSION)
+	Helper = scriptConfig("Helper", "Helper"..VERSION)
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("K"))
 	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("J"))
@@ -75,7 +75,7 @@ function OnTick()
 	if not myHero.dead and Helper.Harass and (Helper.SafeMode == false or GetTickCount() % SAFE == 0) then
 		Harass() -- Harass
 	end
-	if not myHero.dead and GetTickCount() % SAFE == 0 and Helper.Heal then
+	if not myHero.dead and GetTickCount() % SAFE == 0 and Helper.Heal and myHero.mana > 100 then
 		Heal() -- Heal
 	end
 end
