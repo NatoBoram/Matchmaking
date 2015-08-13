@@ -64,7 +64,7 @@ function OnLoad() -- On Load
 	Helper.Debug:addParam("Buff", "Buffs", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Item", "Inventory", SCRIPT_PARAM_ONOFF, false)
 	Helper:addParam("SafeMode", "Safe Mode", SCRIPT_PARAM_ONOFF, true)
-	Helper:addParam("CustomSafe", "Safe Mode Customizer", SCRIPT_PARAM_SLICE, 7, 1, 100, 1)
+	Helper:addParam("CustomSafe", "Safe Mode Customizer", SCRIPT_PARAM_SLICE, 7, 1, 100, 0)
 	Helper:permaShow("UltLogic")
 	Helper:permaShow("KS")
 	Helper:permaShow("Harass")
