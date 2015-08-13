@@ -41,12 +41,13 @@ local SAFE = 7
 local IGNITE = nil
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load
-	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	-- DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	-- SCRIPT_PARAM_SLICE, defaultValue, minValue, maxValue, decimalPlace
 	
 	local EnemyCount = 0
 	for i=1, heroManager.iCount do
-		if i.team ~= myHero.team then EnemyCount = EnemyCount + 1 end
+		local temp = heroManager:getHero(i)
+		if temp.team ~= myHero.team then EnemyCount = EnemyCount + 1 end
 	end
 	
 	Helper = scriptConfig("Helper", "Helper "..VERSION)
@@ -1232,10 +1233,11 @@ function Heal()
 	-- itemmercurial
 	
 	-- Mikael's Crucible (ItemMorellosBane)
-	for hero = 1, heroManager.iCount do
-		if not hero.dead and myHero.team == hero.team and hero.visible and not hero.isStealthed and (hero.isTaunted or hero.isCharmed or hero.isFeared or hero.isAsleep) then
-			CastItemTargetRange("ItemMorellosBane", hero, 750)
-		end
+	for i=1, heroManager.iCount do
+		local temp = heroManager:getHero(i)
+		if not temp.dead and myHero.team == temp.team and temp.visible and not temp.isStealthed and (temp.isTaunted or temp.isCharmed or temp.isFeared or temp.isAsleep) then
+			CastItemTargetRange("ItemMorellosBane", temp, 750)
+			end
 	end
 	
 	-- Targets
