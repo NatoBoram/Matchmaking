@@ -38,9 +38,10 @@ local VERSION = "1.4.10"
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK")
 
 local SAFE = 7
+local IGNITE = nil
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load
-	-- DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	-- SCRIPT_PARAM_SLICE, defaultValue, minValue, maxValue, decimalPlace
 	
 	local EnemyCount = 0
@@ -50,9 +51,7 @@ function OnLoad() -- On Load
 	
 	Helper = scriptConfig("Helper", "Helper "..VERSION)
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
-	if EnemyCount > 0 then
-		Helper:addParam("UltLogic", "Ultimate Logic (Work in Progress)", SCRIPT_PARAM_SLICE, math.ceil(EnemyCount / 2), 1, EnemyCount, 1)
-	end
+	Helper:addParam("UltLogic", "Ultimate Logic (Work in Progress)", SCRIPT_PARAM_SLICE, math.ceil(EnemyCount / 2), 1, EnemyCount, 1)
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("K"))
 	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("J"))
 	Helper:addParam("Heal", "Heal", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("L"))
@@ -70,6 +69,10 @@ function OnLoad() -- On Load
 	Helper:permaShow("Harass")
 	Helper:permaShow("Heal")
 
+	if myHero:GetSpellData(SUMMONER_1).name:lower():find("summonerdot") then IGNITE = SUMMONER_1
+	elseif myHero:GetSpellData(SUMMONER_2).name:lower():find("summonerdot") then IGNITE = SUMMONER_2 
+	end
+	
 	PrintChat(">> Helper "..VERSION.." Loaded")
 	SendChat("/l")
 end
@@ -78,7 +81,7 @@ function OnUnload()
 end
 ------------------------------ OnTick Callback ------------------------------
 function OnTick()
-	if not myHero.dead and (GetTickCount() % SAFE == 0 or not Helper.SafeMode)
+	if not myHero.dead and (GetTickCount() % SAFE == 0 or not Helper.SafeMode) then
 		if Helper.AutoPotions then
 			Drink() -- Auto Potions
 		end
@@ -1201,7 +1204,7 @@ function CastItem(ITEM)
 		end
 	end
 end
-function CastItem(ITEM, TARGET, RANGE)
+function CastItemTargetRange(ITEM, TARGET, RANGE)
 	for SLOT = ITEM_1, ITEM_6 do
 		if myHero:GetSpellData(SLOT).name == ITEM then
 			if myHero:CanUseSpell(SLOT) == READY and myHero:GetDistance(TARGET) < RANGE then
@@ -1230,8 +1233,8 @@ function Heal()
 	
 	-- Mikael's Crucible (ItemMorellosBane)
 	for hero = 1, heroManager.iCount do
-		if not hero.dead and myHero.team == hero.team and hero.visible and not hero:isStealthed and (hero.isTaunted or hero.isCharmed or hero.isFeared or hero.isAsleep)
-			CastItem("ItemMorellosBane", hero, 750)
+		if not hero.dead and myHero.team == hero.team and hero.visible and not hero.isStealthed and (hero.isTaunted or hero.isCharmed or hero.isFeared or hero.isAsleep) then
+			CastItemTargetRange("ItemMorellosBane", hero, 750)
 		end
 	end
 	
