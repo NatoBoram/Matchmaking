@@ -37,11 +37,10 @@ local VERSION = "1.4.10"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK")
 
-local SAFE = 7
 local IGNITE = nil
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load
-	-- DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	-- SCRIPT_PARAM_SLICE, defaultValue, minValue, maxValue, decimalPlace
 	
 	local EnemyCount = 0
@@ -52,7 +51,7 @@ function OnLoad() -- On Load
 	
 	Helper = scriptConfig("Helper", "Helper "..VERSION)
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
-	Helper:addParam("UltLogic", "Ultimate Logic (Work in Progress)", SCRIPT_PARAM_SLICE, math.ceil(EnemyCount / 2), 1, EnemyCount, 1)
+	Helper:addParam("UltLogic", "Ultimate Logic (Work in Progress)", SCRIPT_PARAM_SLICE, math.round(EnemyCount / 2), 1, EnemyCount, 0)
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("K"))
 	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("J"))
 	Helper:addParam("Heal", "Heal", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("L"))
@@ -63,13 +62,14 @@ function OnLoad() -- On Load
 	Helper.Debug:addParam("Spell", "Spells", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Buff", "Buffs", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Item", "Inventory", SCRIPT_PARAM_ONOFF, false)
+	Helper.Debug:addParam("Movement", "Safe Position (Work in Progress)", SCRIPT_PARAM_ONOFF, false)
 	Helper:addParam("SafeMode", "Safe Mode", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("CustomSafe", "Safe Mode Customizer", SCRIPT_PARAM_SLICE, 7, 1, 100, 0)
 	Helper:permaShow("UltLogic")
 	Helper:permaShow("KS")
 	Helper:permaShow("Harass")
 	Helper:permaShow("Heal")
-
+	
 	if myHero:GetSpellData(SUMMONER_1).name:lower():find("summonerdot") then IGNITE = SUMMONER_1
 	elseif myHero:GetSpellData(SUMMONER_2).name:lower():find("summonerdot") then IGNITE = SUMMONER_2 
 	end
@@ -78,11 +78,12 @@ function OnLoad() -- On Load
 	SendChat("/l")
 end
 function OnUnload()
+	PrintChat("This is a "..GetTarget().type)
 	SendChat("/l")
 end
 ------------------------------ OnTick Callback ------------------------------
 function OnTick()
-	if not myHero.dead and (GetTickCount() % SAFE == 0 or not Helper.SafeMode) then
+	if not myHero.dead and (GetTickCount() % Helper.CustomSafe == 0 or not Helper.SafeMode) then
 		if Helper.AutoPotions then
 			Drink() -- Auto Potions
 		end
@@ -100,7 +101,7 @@ end
 ------------------------------ OnDraw Callback ------------------------------
 function OnDraw()
 	for SLOT = ITEM_1, ITEM_6 do
-		if Helper.Debug.Item and GetTickCount() % SAFE == 0 then PrintChat("ITEM : "..myHero:GetSpellData(SLOT).name) end
+		if Helper.Debug.Item and GetTickCount() % Helper.CustomSafe == 0 then PrintChat("ITEM : "..myHero:GetSpellData(SLOT).name) end
 	end
 	
 	if Helper.DrawRange and not myHero.dead then
@@ -127,6 +128,30 @@ function OnDraw()
 	if Helper.DrawXP and not myHero.dead then
 		DrawCircle3D(myHero.x, myHero.y, myHero.z, 1200, 1, ARGB(128, 128, 128, 128))
 	end
+	
+	if Helper.Debug.Movement then
+		local NearCount = 0
+		local TotalX = 0
+		local TotalY = 0
+		local TotalZ = 0
+		for i=1, objManager.iCount do
+			local object = objManager:getObject(i)
+			if object ~= nil then
+				if myHero:GetDistance(object) < 1200 and object.team == myHero.team then
+					NearCount = NearCount + 1
+					TotalX = TotalX + object.x
+					TotalY = TotalY + object.y
+					TotalZ = TotalZ + object.z
+				end
+			end
+		end
+		local AverageX = TotalX / NearCount
+		local AverageY = TotalY / NearCount
+		local AverageZ = TotalZ / NearCount
+		if NearCount ~= 0 then
+			DrawLine3D(myHero.x, myHero.y, myHero.z, AverageX, AverageY, AverageZ, 1, 0x88888888)
+		end
+	end
 end
 ------------------------------ Buff Callback ------------------------------
 rivenpassiveaaboost = false
@@ -148,7 +173,7 @@ function OnApplyBuff(source, target, buff)
 			end
 		end
 	end
-	if Helper.Debug.Buff and source.isMe and myHero.type == target.type then PrintChat("+ "..source.charName.." | "..target.charName.." | "..buff.name) end
+	if Helper.Debug.Buff and source.isMe then PrintChat("+ "..source.charName.." | "..target.charName.." | "..buff.name) end
 end
 function OnRemoveBuff(unit, buff)
 	if unit and buff then
@@ -1393,7 +1418,7 @@ function Harass() -- For Manaless Champions
 		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetQ ~= nil then
 			CastSpell(SPELL_3)
 			if Helper.Debug.Spell then PrintChat("Wuju Style") end
-		elseif myHero.canAttack and TargetQ ~= nil and GetTickCount() % SAFE == 0 then
+		elseif myHero.canAttack and TargetQ ~= nil and GetTickCount() % Helper.CustomSafe == 0 then
 			myHero:Attack(TargetQ)
 		end
 		-- Mordekaiser
