@@ -33,28 +33,29 @@
   Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4.10"
+local VERSION = "1.4.11"
 
 assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK")
 
 local IGNITE = nil
 ------------------------------ OnLoad ------------------------------
 function OnLoad() -- On Load
-	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	-- DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/helper.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	-- SCRIPT_PARAM_SLICE, defaultValue, minValue, maxValue, decimalPlace
-	
+
 	local EnemyCount = 0
 	for i=1, heroManager.iCount do
 		local temp = heroManager:getHero(i)
 		if temp.team ~= myHero.team then EnemyCount = EnemyCount + 1 end
 	end
-	
+
 	Helper = scriptConfig("Helper", "Helper "..VERSION)
 	Helper:addParam("AutoPotions", "Auto Potions", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("UltLogic", "Ultimate Logic (Work in Progress)", SCRIPT_PARAM_SLICE, math.round(EnemyCount / 2), 1, EnemyCount, 0)
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("K"))
 	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("J"))
 	Helper:addParam("Heal", "Heal", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("L"))
+	Helper:addParam("Farm", "Farm (Work In Progress)", SCRIPT_PARAM_ONKEYTOGGLE, false, GetKey("M"))
 	Helper:addParam("DrawRange", "Draw Range", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("DrawTargets", "Draw Targets", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("DrawXP", "Draw Line of Sight", SCRIPT_PARAM_ONOFF, true)
@@ -62,6 +63,8 @@ function OnLoad() -- On Load
 	Helper.Debug:addParam("Spell", "Spells", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Buff", "Buffs", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Item", "Inventory", SCRIPT_PARAM_ONOFF, false)
+	Helper.Debug:addParam("TargetType", "Target Type", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("N"))
+	Helper.Debug:addParam("OnSpell", "OnProcessSpell", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Movement", "Safe Position (Work in Progress)", SCRIPT_PARAM_ONOFF, false)
 	Helper:addParam("SafeMode", "Safe Mode", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("CustomSafe", "Safe Mode Customizer", SCRIPT_PARAM_SLICE, 7, 1, 100, 0)
@@ -69,16 +72,21 @@ function OnLoad() -- On Load
 	Helper:permaShow("KS")
 	Helper:permaShow("Harass")
 	Helper:permaShow("Heal")
-	
+	Helper:permaShow("Farm")
+
 	if myHero:GetSpellData(SUMMONER_1).name:lower():find("summonerdot") then IGNITE = SUMMONER_1
-	elseif myHero:GetSpellData(SUMMONER_2).name:lower():find("summonerdot") then IGNITE = SUMMONER_2 
+	elseif myHero:GetSpellData(SUMMONER_2).name:lower():find("summonerdot") then IGNITE = SUMMONER_2
 	end
-	
+
+	-- Auto Level (Only ult for now)
+	local levelSequence = {nil,nil,nil,nil,nil,4,nil,nil,nil,nil,4,nil,nil,nil,nil,4,nil,nil}
+	autoLevelSetSequence(levelSequence)
+
 	PrintChat(">> Helper "..VERSION.." Loaded")
 	SendChat("/l")
 end
+
 function OnUnload()
-	PrintChat("This is a "..GetTarget().type)
 	SendChat("/l")
 end
 ------------------------------ OnTick Callback ------------------------------
@@ -97,13 +105,16 @@ function OnTick()
 			Heal() -- Heal
 		end
 	end
+	if Helper.Farm then
+			Farm() -- Farm
+	end
 end
 ------------------------------ OnDraw Callback ------------------------------
 function OnDraw()
 	for SLOT = ITEM_1, ITEM_6 do
 		if Helper.Debug.Item and GetTickCount() % Helper.CustomSafe == 0 then PrintChat("ITEM : "..myHero:GetSpellData(SLOT).name) end
 	end
-	
+
 	if Helper.DrawRange and not myHero.dead then
 		DrawCircle3D(myHero.x, myHero.y, myHero.z, MaxRange(), 1, ARGB(255, 0, 255, 0))
 	end
@@ -124,11 +135,15 @@ function OnDraw()
 			end
 		end
 	end
-	
+
 	if Helper.DrawXP and not myHero.dead then
 		DrawCircle3D(myHero.x, myHero.y, myHero.z, 1200, 1, ARGB(128, 128, 128, 128))
 	end
-	
+
+	if Helper.Debug.TargetType and GetTickCount() % Helper.CustomSafe == 0 then
+		PrintChat("This is a "..GetTarget().type)
+	end
+
 	if Helper.Debug.Movement then
 		local NearCount = 0
 		local TotalX = 0
@@ -148,7 +163,7 @@ function OnDraw()
 		local AverageX = TotalX / NearCount
 		local AverageY = TotalY / NearCount
 		local AverageZ = TotalZ / NearCount
-		if NearCount ~= 0 then
+		if NearCount > 0 then
 			DrawLine3D(myHero.x, myHero.y, myHero.z, AverageX, AverageY, AverageZ, 1, 0x88888888)
 		end
 	end
@@ -193,6 +208,12 @@ function OnRemoveBuff(unit, buff)
 end
 function OnUpdateBuff(unit, buff, stacks)
 	if not unit or not buff then return end
+end
+------------------------------ OnProcessSpell ------------------------------
+function OnProcessSpell(object, spellProc)
+	if Helper.Debug.OnSpell and myHero:GetDistance(object) < 1200 then
+		PrintChat("~ "..object.charName)
+	end
 end
 ------------------------------ Select Lowest Enemy in Range ------------------------------
 function SelectTarget(Range)
@@ -894,6 +915,12 @@ function Range(Spell) -- Yes, it is incomplete. I don't even use some of these v
 		-- Urgot
 		-- Varus
 		-- Vayne
+	elseif myHero.charName == "Vayne" then
+		if Spell == "P" then return 1200 end
+		if Spell == "Q" then return 300 end
+		if Spell == "W" then return myHero.range end
+		if Spell == "E" then return 550 end
+		if Spell == "R" then return myHero.range end
 		-- Veigar
 		-- Vel'Koz
 		-- Vi
@@ -1061,7 +1088,7 @@ function OneCombo(target)
 	elseif myHero.charName == "Ezreal" then -- R
 		if myHero:CanUseSpell(SPELL_4) == READY then DAMAGE = DAMAGE + getDmg("R", target, myHero) end
 		return DAMAGE
-		
+
 	elseif myHero.charName == "Fizz" then -- QW
 		if myHero:CanUseSpell(SPELL_1) == READY then DAMAGE = DAMAGE + getDmg("Q", target, myHero) + OnHit(target) end
 		DAMAGE = DAMAGE + getDmg("W", target, myHero, 1) + getDmg("W", target, myHero, 2) + getDmg("W", target, myHero, 3)
@@ -1197,7 +1224,7 @@ function Drink() -- Auto Potions
 					CastSpell(SLOT)
 					if Helper.Debug.Spell then PrintChat("Crystalline Flask") end
 				end
-			
+
 			end
 			-- Health Potions
 			if myHero:GetSpellData(SLOT).name == "RegenerationPotion" and not RevenerationPotion then
@@ -1216,6 +1243,29 @@ function Drink() -- Auto Potions
 					CastSpell(SLOT)
 					if Helper.Debug.Spell then PrintChat("Mana Potion") end
 				end
+			end
+		end
+end
+end
+------------------------------ Farm ------------------------------
+function Farm()
+	local lowest = nil
+	for i=1, objManager.iCount do
+		local object = objManager:getObject(i)
+		if object ~= nil then
+			if myHero:GetDistance(object) < 1200 and object.team ~= myHero.team and object.type == "obj_AI_Minion" and not object.dead then
+				if lowest == nil then
+					lowest = object
+				elseif object.health < lowest.health then
+					lowest = object
+				end
+			end
+		end
+	end
+	if lowest ~= nil then
+		if lowest.health < getDmg("AD", lowest, myHero) then
+			if (myHero:GetDistance(lowest) > myHero.range and GetTickCount() % Helper.CustomSafe == 0) or myHero:GetDistance(lowest) < myHero.range then
+				myHero:Attack(lowest)
 			end
 		end
 	end
@@ -1256,15 +1306,15 @@ function Heal()
 	-- HextechGunblade
 	-- ItemGhostWard
 	-- itemmercurial
-	
+
 	-- Mikael's Crucible (ItemMorellosBane)
 	for i=1, heroManager.iCount do
 		local temp = heroManager:getHero(i)
 		if not temp.dead and myHero.team == temp.team and temp.visible and not temp.isStealthed and (temp.isTaunted or temp.isCharmed or temp.isFeared or temp.isAsleep) then
 			CastItemTargetRange("ItemMorellosBane", temp, 750)
-			end
+		end
 	end
-	
+
 	-- Targets
 	if myHero.isStealthed then return end
 	local TargetQ = SelectHeal(Range("Q"))
@@ -1291,6 +1341,11 @@ function Heal()
 			end
 		end
 		-- Gangplank
+	elseif myHero.charName == "Gangplank" then
+		if myHero:CanUseSpell(SPELL_2) == READY and not myHero.canAttack() then
+			CastSpell(SPELL_2)
+			if Helper.Debug.Spell then PrintChat("Remove Scurvy") end
+		end
 		-- Kayle
 	elseif myHero.charName == "Kayle" then
 		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
@@ -1433,6 +1488,15 @@ function Harass() -- For Manaless Champions
 			CastSpell(SPELL_3, TargetE.x, TargetE.z)
 			if Helper.Debug.Spell then PrintChat("Siphon of Destruction") end
 		end
+		-- Nautilus
+	elseif myHero.charName == "Nautilus" then
+		if myHero:CanUseSpell(SPELL_2) == READY and TargetW ~= nil then
+			CastSpell(SPELL_2)
+			if Helper.Debug.Spell then PrintChat("Titan's Wrath") end
+		elseif myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
+			CastSpell(SPELL_3)
+			if Helper.Debug.Spell then PrintChat("Riptide") end
+		end
 		-- Rengar
 	elseif myHero.charName == "Rengar" then
 		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
@@ -1520,6 +1584,12 @@ function Harass() -- For Manaless Champions
 			myHero:Attack(TargetQ)
 			if Helper.Debug.Spell then PrintChat("Hymn of Valor") end
 		end
+		-- Soraka
+	elseif myHero.charName == "Soraka" then
+		if myHero:CanUseSpell(SPELL_1) == READY and TargetQ ~= nil then
+			CastSpell(SPELL_1, TargetQ.x, TargetQ.z)
+			if Helper.Debug.Spell then PrintChat("Starcall") end
+		end
 		-- Swain
 	elseif myHero.charName == "Swain" then
 		if myHero:CanUseSpell(SPELL_3) == READY and TargetE ~= nil then
@@ -1583,7 +1653,8 @@ function Harass() -- For Manaless Champions
 end
 ------------------------------ UltLogic ------------------------------
 function UltLogic()
-	
+	-- TODO : Ult Logic
+	return
 end
 ------------------------------ Kill ------------------------------
 function Kill(target)
@@ -1644,7 +1715,7 @@ function Kill(target)
 				CastSpell(SPELL_4, target)
 				if Helper.Debug.Spell then PrintChat("Noxian Guillotine") end
 			end
-		-- Ezreal
+			-- Ezreal
 		elseif myHero.charName == "Ezreal" and OneCombo(target) > target.health then
 			if myHero:CanUseSpell(SPELL_4) == READY then
 				CastSpell(SPELL_4, target.x, target.z)
@@ -1660,11 +1731,13 @@ function Kill(target)
 				if Helper.Debug.Spell then PrintChat("Urchin Strike") end
 			end
 			-- Gangplank
-		elseif myHero.charName == "Gangplank" and OneCombo(target) > target.health then
-			if myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(target) < Range("Q") then
+		elseif myHero.charName == "Gangplank" then
+			if myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(target) < Range("Q") and OneCombo(target) > target.health then
 				CastSpell(SPELL_1, target)
 				if Helper.Debug.Spell then PrintChat("Parrrley") end
-			elseif myHero:CanUseSpell(SPELL_4) == READY then
+			end
+			target = SelectTarget(math.huge)
+			if myHero:CanUseSpell(SPELL_4) == READY and OneCombo(target) > target.health then
 				CastSpell(SPELL_4, target.x, target.z)
 				if Helper.Debug.Spell then PrintChat("Cannon Barrage") end
 			end
