@@ -33,7 +33,7 @@
   Official Download Link : http://pastebin.com/download.php?i=cLjSuk2p
 ]]
 
-local VERSION = "1.4.12"
+local VERSION = "1.7.0"
 
 assert(load(Base64Decode("G0x1YVIAAQQEBAgAGZMNChoKAAAAAAAAAAAAAQIKAAAABgBAAEFAAAAdQAABBkBAAGUAAAAKQACBBkBAAGVAAAAKQICBHwCAAAQAAAAEBgAAAGNsYXNzAAQNAAAAU2NyaXB0U3RhdHVzAAQHAAAAX19pbml0AAQLAAAAU2VuZFVwZGF0ZQACAAAAAgAAAAgAAAACAAotAAAAhkBAAMaAQAAGwUAABwFBAkFBAQAdgQABRsFAAEcBwQKBgQEAXYEAAYbBQACHAUEDwcEBAJ2BAAHGwUAAxwHBAwECAgDdgQABBsJAAAcCQQRBQgIAHYIAARYBAgLdAAABnYAAAAqAAIAKQACFhgBDAMHAAgCdgAABCoCAhQqAw4aGAEQAx8BCAMfAwwHdAIAAnYAAAAqAgIeMQEQAAYEEAJ1AgAGGwEQA5QAAAJ1AAAEfAIAAFAAAAAQFAAAAaHdpZAAEDQAAAEJhc2U2NEVuY29kZQAECQAAAHRvc3RyaW5nAAQDAAAAb3MABAcAAABnZXRlbnYABBUAAABQUk9DRVNTT1JfSURFTlRJRklFUgAECQAAAFVTRVJOQU1FAAQNAAAAQ09NUFVURVJOQU1FAAQQAAAAUFJPQ0VTU09SX0xFVkVMAAQTAAAAUFJPQ0VTU09SX1JFVklTSU9OAAQEAAAAS2V5AAQHAAAAc29ja2V0AAQIAAAAcmVxdWlyZQAECgAAAGdhbWVTdGF0ZQAABAQAAAB0Y3AABAcAAABhc3NlcnQABAsAAABTZW5kVXBkYXRlAAMAAAAAAADwPwQUAAAAQWRkQnVnc3BsYXRDYWxsYmFjawABAAAACAAAAAgAAAAAAAMFAAAABQAAAAwAQACBQAAAHUCAAR8AgAACAAAABAsAAABTZW5kVXBkYXRlAAMAAAAAAAAAQAAAAAABAAAAAQAQAAAAQG9iZnVzY2F0ZWQubHVhAAUAAAAIAAAACAAAAAgAAAAIAAAACAAAAAAAAAABAAAABQAAAHNlbGYAAQAAAAAAEAAAAEBvYmZ1c2NhdGVkLmx1YQAtAAAAAwAAAAMAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABgAAAAYAAAAGAAAABgAAAAUAAAADAAAAAwAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAIAAAACAAAAAgAAAAIAAAAAgAAAAUAAABzZWxmAAAAAAAtAAAAAgAAAGEAAAAAAC0AAAABAAAABQAAAF9FTlYACQAAAA4AAAACAA0XAAAAhwBAAIxAQAEBgQAAQcEAAJ1AAAKHAEAAjABBAQFBAQBHgUEAgcEBAMcBQgABwgEAQAKAAIHCAQDGQkIAx4LCBQHDAgAWAQMCnUCAAYcAQACMAEMBnUAAAR8AgAANAAAABAQAAAB0Y3AABAgAAABjb25uZWN0AAQRAAAAc2NyaXB0c3RhdHVzLm5ldAADAAAAAAAAVEAEBQAAAHNlbmQABAsAAABHRVQgL3N5bmMtAAQEAAAAS2V5AAQCAAAALQAEBQAAAGh3aWQABAcAAABteUhlcm8ABAkAAABjaGFyTmFtZQAEJgAAACBIVFRQLzEuMA0KSG9zdDogc2NyaXB0c3RhdHVzLm5ldA0KDQoABAYAAABjbG9zZQAAAAAAAQAAAAAAEAAAAEBvYmZ1c2NhdGVkLmx1YQAXAAAACgAAAAoAAAAKAAAACgAAAAoAAAALAAAACwAAAAsAAAALAAAADAAAAAwAAAANAAAADQAAAA0AAAAOAAAADgAAAA4AAAAOAAAACwAAAA4AAAAOAAAADgAAAA4AAAACAAAABQAAAHNlbGYAAAAAABcAAAACAAAAYQAAAAAAFwAAAAEAAAAFAAAAX0VOVgABAAAAAQAQAAAAQG9iZnVzY2F0ZWQubHVhAAoAAAABAAAAAQAAAAEAAAACAAAACAAAAAIAAAAJAAAADgAAAAkAAAAOAAAAAAAAAAEAAAAFAAAAX0VOVgA="), nil, "bt", _ENV))() ScriptStatus("WJMKPIQQORK")
 
@@ -55,10 +55,12 @@ function OnLoad() -- On Load
 	Helper:addParam("KS", "Kill Secure", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("K"))
 	Helper:addParam("Harass", "Harass", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("J"))
 	Helper:addParam("Heal", "Heal", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("L"))
-	Helper:addParam("Farm", "Farm (Work In Progress)", SCRIPT_PARAM_ONKEYTOGGLE, false, GetKey("M"))
+	Helper:addParam("Block", "Block Projectiles", SCRIPT_PARAM_ONKEYTOGGLE, true, GetKey("I"))
+	Helper:addParam("Farm", "Farm", SCRIPT_PARAM_ONKEYTOGGLE, false, GetKey("M"))
 	Helper:addParam("DrawRange", "Draw Range", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("DrawTargets", "Draw Targets", SCRIPT_PARAM_ONOFF, true)
 	Helper:addParam("DrawXP", "Draw Line of Sight", SCRIPT_PARAM_ONOFF, true)
+	Helper:addParam("DrawTurret", "Draw Turret Range", SCRIPT_PARAM_ONOFF, true)
 	Helper:addSubMenu("Debug Information", "Debug")
 	Helper.Debug:addParam("Spell", "Spells", SCRIPT_PARAM_ONOFF, false)
 	Helper.Debug:addParam("Buff", "Buffs", SCRIPT_PARAM_ONOFF, false)
@@ -72,6 +74,7 @@ function OnLoad() -- On Load
 	Helper:permaShow("KS")
 	Helper:permaShow("Harass")
 	Helper:permaShow("Heal")
+	Helper:permaShow("Block")
 	Helper:permaShow("Farm")
 
 	if myHero:GetSpellData(SUMMONER_1).name:lower():find("summonerdot") then IGNITE = SUMMONER_1
@@ -106,7 +109,7 @@ function OnTick()
 		end
 	end
 	if Helper.Farm then
-			Farm() -- Farm
+		Farm() -- Farm
 	end
 end
 ------------------------------ OnDraw Callback ------------------------------
@@ -124,13 +127,13 @@ function OnDraw()
 			local temp = heroManager:getHero(i)
 			if not temp.dead and myHero.team ~= temp.team and temp.visible and ValidTarget(temp) and OneCombo(temp) ~= nil then
 				if temp.health < OneCombo(temp)*1 then -- 3
-					DrawCircle3D(temp.x, temp.y, temp.z, 50, 6, ARGB(155,255,0,0), 16)
+					DrawCircle3D(temp.x, temp.y, temp.z, 50, 6, ARGB(155,255,0,0))
 				end
 				if temp.health < OneCombo(temp)*2 then -- 2
-					DrawCircle3D(temp.x, temp.y, temp.z, 30, 6, ARGB(155,255,0,0), 16)
+					DrawCircle3D(temp.x, temp.y, temp.z, 30, 6, ARGB(155,255,0,0))
 				end
 				if temp.health < OneCombo(temp)*3 then -- 1
-					DrawCircle3D(temp.x, temp.y, temp.z, 10, 6, ARGB(155,255,0,0), 16)
+					DrawCircle3D(temp.x, temp.y, temp.z, 10, 6, ARGB(155,255,0,0))
 				end
 			end
 		end
@@ -168,13 +171,26 @@ function OnDraw()
 		end
 	end
 	
-	-- TODO : Draw turret range - obj_AI_Turret
+	if Helper.DrawTurret then 
+		for i=1, objManager.iCount do
+		local object = objManager:getObject(i)
+			if object ~= nil then
+				if myHero:GetDistance(object) < 1200 and object.type == "obj_AI_Turret" and not object.dead then
+					if object.team ~= myHero.team then 
+						DrawCircle3D(object.x, object.y, object.z, 775, 1, ARGB(myHero:GetDistance(object) / 1200 * 255, 255, 0, 0))
+					elseif object.team == myHero.team then
+						DrawCircle3D(object.x, object.y, object.z, 775, 1, ARGB(255 - (myHero:GetDistance(object) / 1200 * 255), 0, 255, 0))
+					end
+				end
+			end
+		end
+	end
 end
 ------------------------------ Buff Callback ------------------------------
-rivenpassiveaaboost = false
-RegenerationPotion = false
-FlaskOfCrystalWater = false
-rivenwindslashready = false
+local rivenpassiveaaboost = false
+local RegenerationPotion = false
+local FlaskOfCrystalWater = false
+local rivenwindslashready = false
 
 function OnApplyBuff(source, target, buff)
 	if source and target and buff then
@@ -214,8 +230,43 @@ end
 ------------------------------ OnProcessSpell ------------------------------
 function OnProcessSpell(object, spellProc)
 	if Helper.Debug.OnSpell and myHero:GetDistance(object) < 1200 then
-		PrintChat("~ "..object.charName)
+		PrintChat("Object : "..object.charName..", spellProc : "..spellProc.name)
 	end
+	
+	if (myHero.charName == "Yasuo" and object.team ~= myHero.team and myHero:CanUseSpell(SPELL_2) == READY) and Helper.Block and (false
+	or spellProc.name == "EnchantedCrystalArrow"
+	or spellProc.name == "BrandWildfire"
+	or spellProc.name == "BraumPulseLine"
+	or spellProc.name == "CaitlynAceintheHole"
+	or spellProc.name == "MissileBarrage"
+	or spellProc.name == "DravenRCast"
+	or spellProc.name == "EzrealTrueshotBarrage"
+	or spellProc.name == "GravesChargeShot"
+	or spellProc.name == "IreliaTranscendentBlades"
+	or spellProc.name == "JinxR"
+	or spellProc.name == "KatarinaR"
+	or spellProc.name == "LucianR"
+	or spellProc.name == "MissFortuneBulletTime"
+	or spellProc.name == "NamiR"
+	or spellProc.name == "RivenWindslashMissileCenter"
+	or spellProc.name == "SonaR"
+	or spellProc.name == "SwainMetamorphism"
+	or spellProc.name == "ShadowAssault"
+	or spellProc.name == "TristanaR"
+	or spellProc.name == "VarusR"
+	or spellProc.name == "VeigarPrimordialBurst"
+	or spellProc.name == "ZiggsR"
+	or spellProc.name == "AzirR"
+	or spellProc.name == "FizzMarinerDoom"
+	or false)
+	then
+		CastSpell(SPELL_2, spellProc.startPos.x, spellProc.startPos.z)
+		if Helper.Debug.Spell then 
+			PrintChat("Wind Wall")
+		end
+	end
+end
+function OnCreateObj(object)
 end
 ------------------------------ Select Lowest Enemy in Range ------------------------------
 function SelectTarget(Range)
