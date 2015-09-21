@@ -15,5 +15,5 @@ pause
 
 start D:\Nato\LibreOfficePortable\Data\fonts
 
-del D:\Nato\install.bat
+start del D:\Nato\install.bat
 exit
