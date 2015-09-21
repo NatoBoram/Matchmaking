@@ -72,4 +72,4 @@ start http://www.systemrequirementslab.com/cyri
 start http://www.teamspeak.com/downloads
 pause
 
-start del D:\Nato\install.bat
+start del C:\Nato\install.bat
