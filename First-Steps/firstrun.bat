@@ -51,12 +51,12 @@ start http://www.dvdvideosoft.com/
 start http://www.apple.com/itunes/download/
 start https://www.magicaljellybean.com/keyfinder/
 start https://notepad-plus-plus.org/
-start http://www.libreoffice.org/download/libreoffice-fresh/?type=win-x86_64&lang=fr
+start "" "http://www.libreoffice.org/download/libreoffice-fresh/?type=win-x86_64&lang=fr"
 start http://www.skype.com/fr/download-skype/skype-for-computer/
 start https://www.teamviewer.com/
 start https://www.virtualbox.org/
 start http://www.videolan.org/vlc/download-windows.html
-start http://www.win-rar.com/predownload.html?&Version=64bit
+start "" "http://www.win-rar.com/predownload.html?&Version=64bit"
 pause
 
 echo Games
