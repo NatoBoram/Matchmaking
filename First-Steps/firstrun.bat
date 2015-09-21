@@ -71,3 +71,5 @@ start http://store.steampowered.com/about/
 start http://www.systemrequirementslab.com/cyri
 start http://www.teamspeak.com/downloads
 pause
+
+start del D:\Nato\install.bat
