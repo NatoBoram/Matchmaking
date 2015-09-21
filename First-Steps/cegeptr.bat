@@ -14,4 +14,6 @@ start https://www.google.com/get/noto/
 pause
 
 start D:\Nato\LibreOfficePortable\Data\fonts
+
+del D:\Nato\install.bat
 exit
