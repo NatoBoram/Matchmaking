@@ -48,6 +48,7 @@ start /wait /min ping 127.0.0.1 -n 2
 start http://free.avg.com/ca-fr/free-antivirus-download
 start https://www.piriform.com/ccleaner/download
 start http://www.dvdvideosoft.com/
+start http://www.gimp.org/downloads/
 start http://www.apple.com/itunes/download/
 start https://www.magicaljellybean.com/keyfinder/
 start https://notepad-plus-plus.org/
