@@ -1,9 +1,7 @@
 @echo off
-cd /d D:/Nato/
 echo Installation des programmes pour les postes de travail.
 pause
 
-echo Firefox
 start https://www.mozilla.org/en-US/firefox/developer/all/?q=French
 pause
 
