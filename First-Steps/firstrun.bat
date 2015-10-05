@@ -42,6 +42,13 @@ start /wait /min ping 127.0.0.1 -n 2
 start http://www.apple.com/quicktime/download/
 pause
 
+echo Web Plugin
+start firefox
+start /wait /min ping 127.0.0.1 -n 2
+start https://skypewebexperience.skype.com/content/3-14-1793/plugin_installation.html
+start https://www.google.com/tools/dlpage/hangoutplugin/
+pause
+
 echo Applications
 start firefox
 start /wait /min ping 127.0.0.1 -n 2
