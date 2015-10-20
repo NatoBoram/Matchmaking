@@ -1,4 +1,5 @@
 *.txt text
 *.lua text
 *.bat text
+*.java text
 *.jar binary
