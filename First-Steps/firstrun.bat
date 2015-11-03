@@ -1,4 +1,5 @@
 @echo off
+set x=5
 echo Installation des premiers logiciels sur un nouvel appareil.
 pause
 
@@ -8,14 +9,14 @@ pause
 
 echo AdBlockPlus
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start https://adblockplus.org/
 start https://adblockplus.org/elemhidehelper
 pause
 
 echo Microsoft
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start https://www.microsoft.com/fr-ca/download/details.aspx?id=35
 start http://www.microsoft.com/fr-ca/download/details.aspx?id=44928
 start http://www.microsoft.com/silverlight/
@@ -23,7 +24,7 @@ pause
 
 echo Adobe
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start https://get.adobe.com/fr/reader/
 start https://get.adobe.com/fr/flashplayer/
 start https://get.adobe.com/fr/air/
@@ -32,26 +33,26 @@ pause
 
 echo Java
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start http://java.com/fr/download/manual.jsp
 pause
 
 echo Apple
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start http://www.apple.com/quicktime/download/
 pause
 
 echo Web Plugin
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start https://skypewebexperience.skype.com/content/3-14-1793/plugin_installation.html
 start https://www.google.com/tools/dlpage/hangoutplugin/
 pause
 
 echo Applications
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start http://free.avg.com/ca-fr/free-antivirus-download
 start https://www.piriform.com/ccleaner/download
 start http://www.dvdvideosoft.com/
@@ -69,7 +70,7 @@ pause
 
 echo Games
 start firefox
-start /wait /min ping 127.0.0.1 -n 2
+start /wait /min ping 127.0.0.1 -n %x%
 start https://us.battle.net/account/download/
 start http://www.cheatengine.org/
 start http://na.leagueoflegends.com/
