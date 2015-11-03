@@ -18,6 +18,7 @@ echo Microsoft
 start firefox
 start /wait /min ping 127.0.0.1 -n %x%
 start "" "https://www.microsoft.com/fr-ca/download/confirmation.aspx?id=35"
+start "" "http://www.microsoft.com/en-us/download/details.aspx?id=30679"
 start "" "http://www.microsoft.com/fr-ca/download/details.aspx?id=44928"
 start "" "http://www.microsoft.com/silverlight/"
 pause
@@ -95,6 +96,8 @@ start "" "https://filezilla-project.org/download.php"
 start "" "http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html"
 start "" "http://adam.denadai.free.fr/index.php?page=Download"
 start "" "https://desktop.github.com/"
+start "" "http://www.wampserver.com/"
+start "" "https://www.python.org/downloads/"
 pause
 
 del C:\Nato\install.bat
