@@ -1,8 +1,6 @@
 package pkSyllable;
 import javax.swing.*;
-
 import pkUpdate.Updater;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -10,13 +8,14 @@ import java.util.*;
  * 0.1 : Syllable created.
  * 0.2 : Optimized code.
  * 0.3 : More Letters, Fewer Letters, Latin Japanese and Japanese generator.
+ * 1.0.0 : Auto Updater
  */
 
 public class Syllable {
 
 	// Variables
 	final static String PROJECTNAME = "Syllable";
-	final static String VERSION = "0.3";
+	final static String VERSION = "1.0.0";
 	static Random r = new Random();
 	static String word = "";
 
