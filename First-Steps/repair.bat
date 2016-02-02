@@ -1,17 +1,8 @@
-@echo off
-verify on
-start mdsched
-start sigverif
-start chkdsk c: /b
-start chkdsk d: /b
-net start w32time
-w32tm /resync
-ipconfig /registerdns
-defrag c: /h /u
-defrag d: /h /u
+sfc /scannow
 dism /online /cleanup-image /checkhealth
 dism /online /cleanup-image /scanhealth
-dism /online /cleanup-image /restorehealth
+dism /online /cleanup-image /restorehealth /source:wim:F:\sources\install.wim:1
+sfc /scannow
 dism /online /cleanup-image /spsuperseded /hidesp
 dism /online /cleanup-image /startcomponentcleanup /resetbase
 sfc /scannow
