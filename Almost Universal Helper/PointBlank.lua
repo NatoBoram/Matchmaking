@@ -2,13 +2,13 @@
 	by Nato Boram
 	
 	Official Topic Link : 
-	Official Download Link : 
+	Official Download Link : https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/PointBlank.lua
 ]]
 
 local VERSION = "0.0.1"
 
 function OnLoad()
-	-- DownloadFile("", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
+	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/PointBlank.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	PrintChat(">> PointBlank "..VERSION.." Loaded")
 	SendChat("/l")
 end
