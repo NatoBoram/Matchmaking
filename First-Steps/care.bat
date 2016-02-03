@@ -1,5 +1,6 @@
 @echo off
 verify on
+wuauclt /detectnow /updatenow
 start mdsched
 start sigverif
 start chkdsk c: /b

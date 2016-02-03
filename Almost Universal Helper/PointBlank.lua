@@ -13,7 +13,6 @@ local VERSION = "0.0.3"
 function OnLoad()
 	DownloadFile("https://raw.githubusercontent.com/NatoBoram/Update/master/Almost%20Universal%20Helper/PointBlank.lua", SCRIPT_PATH..GetCurrentEnv().FILE_NAME, function() end)
 	PrintFloatText(myHero, 24, "PointBlank "..VERSION)
-	SendChat("/l")
 end
 
 function OnUnload()
@@ -43,7 +42,7 @@ function OnProcessSpell(object, spellProc)
 	-- if myHero:GetDistance(object) <= 1200 then PrintChat("Object : "..object.charName..", spellProc : "..spellProc.name) end
 	
 	-- Ultimate Projectiles
-	if (false
+	if false
 	or spellProc.name == "EnchantedCrystalArrow"
 	or spellProc.name == "BrandWildfire"
 	or spellProc.name == "BraumPulseLine"
@@ -68,13 +67,13 @@ function OnProcessSpell(object, spellProc)
 	or spellProc.name == "ZiggsR"
 	or spellProc.name == "AzirR"
 	or spellProc.name == "FizzMarinerDoom"
-	or false)
+	or false
 	then
 		OnUltimateProjectile(object, spellProc)
 	end
 	
 	-- Ultimate Channels
-	if (false
+	if false
 	or spellProc.name == "CaitlynAceintheHole"
 	or spellProc.name == "DariusExecute"
 	or spellProc.name == "Crowstorm"
@@ -95,13 +94,13 @@ function OnProcessSpell(object, spellProc)
 	or spellProc.name == "EzrealTrueshotBarrage"
 	or spellProc.name == "LuxMaliceCannon" -- ???
 	or spellProc.name == "XerathLocusPulse" -- ???
-	or false)
+	or false
 	then
 		OnUltimateChannel(object, spellProc)
 	end
 	
 	-- Channels
-	if (false
+	if false
 	or spellProc.name == "Drain"
 	or spellProc.name == "GragasW"
 	or spellProc.name == "Meditate"
@@ -111,15 +110,58 @@ function OnProcessSpell(object, spellProc)
 	or spellProc.name == "VarusQ"
 	or spellProc.name == "ViQ"
 	or spellProc.name == "XerathArcanopulse2"
-	or false)
+	or false
 	then
 		OnChannel(object, spellProc)
+	end
+	
+	-- Dashes
+	if false
+	or spellProc.name == "AhriTumble"
+	or spellProc.name == "CaitlynEntrapment"
+	or spellProc.name == "CarpetBomb"
+	or spellProc.name == "GragasE"
+	or spellProc.name == "GravesMove"
+	or spellProc.name == "LucianE"
+	or spellProc.name == "RenektonSliceAndDice"
+	or spellProc.name == "RivenTriCleave"
+	or spellProc.name == "RivenFeint"
+	or spellProc.name == "SejuaniArcticAssault"
+	or spellProc.name == "ShenE"
+	or spellProc.name == "ShyvanaTransformCast"
+	or spellProc.name == "slash"
+	or spellProc.name == "VayneTumble"
+	or spellProc.name == "AatroxQ"
+	or spellProc.name == "EkkoE"
+	or spellProc.name == "FizzJumpTwo"
+	or spellProc.name == "GnarBigE"
+	or spellProc.name == "HecarimUlt"
+	or spellProc.name == "KhazixE"
+	or spellProc.name == "KhazixE"
+	or spellProc.name == "KindredQ"
+	or spellProc.name == "LeblancSlide"
+	or spellProc.name == "LeblancSlideM"
+	or spellProc.name == "TristanaW"
+	-- http://leagueoflegends.wikia.com/wiki/Dash#Unit-targeted_Dashes
+	or spellProc.name == "FioraQ"
+	or spellProc.name == "FizzPiercingStrike"
+	or false
+	then
+		OnDash(object, spellProc)
 	end
 	
 end
 
 ---------- Objects ----------
 function OnCreateObj(object)
+end
+
+---------- Basic Attacks ----------
+function OnProcessAttack(unit, attackProc)
+end
+
+---------- Animations ----------
+function OnAnimation(unit, animation)
 end
 
 ---------- Custom Callbacks ----------
@@ -350,6 +392,43 @@ function OnChannel(object, spellProc)
 	elseif myHero.charName == "Zyra" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(object) < 1100 then
 		if myHero:CanUseSpell(SPELL_1) == READY then CastSpell(SPELL_1, object.x, object.z) end
 		CastSpell(SPELL_3, object.x, object.z)
+	end
+end
+
+function OnDash(object, spellProc)
+	if myHero.charName == "Aatrox" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ahri" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 880 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ahri" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 975 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ahri" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 550 then
+		CastSpell(SPELL_2)
+	elseif myHero.charName == "Ashe" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1200 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Bard" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Blitzcrank" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 925 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Brand" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Brand" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1050 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Braum" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Caitlyn" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1250 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Cassiopeia" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 850 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Cassiopeia" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 850 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "ChoGath" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 300 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "ChoGath" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Corki" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 880 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	-- http://leagueoflegends.wikia.com/wiki/List_of_champions
 	end
 end
 
