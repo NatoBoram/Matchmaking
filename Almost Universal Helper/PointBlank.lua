@@ -428,6 +428,22 @@ function OnDash(object, spellProc)
 		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
 	elseif myHero.charName == "Corki" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 880 then
 		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Corki" and myHero:CanUseSpell(SPELL_4) == READY and myHero:GetDistance(spellProc.endPos) < 1225 then
+		CastSpell(SPELL_4, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Darius" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 550 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.startPos) < 350 then
+		CastSpell(SPELL_3)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 350 then
+		CastSpell(SPELL_3)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 830 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "DrMundo" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Draven" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 830 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ekko" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1075 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
 	-- http://leagueoflegends.wikia.com/wiki/List_of_champions
 	end
 end
