@@ -36,6 +36,7 @@ end
 
 ---------- On Spell ----------
 function OnProcessSpell(object, spellProc)
+	if not object or not spellProc and object.team == myHero.team then return end
 	PrintFloatText(object, 24, object.charName.." : "..spellProc.name)
 	-- if myHero:GetDistance(object) < 1200 then PrintChat("Object : "..object.charName..", spellProc : "..spellProc.name) end
 	
