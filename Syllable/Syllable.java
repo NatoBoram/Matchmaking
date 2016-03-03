@@ -1,7 +1,7 @@
 package pkSyllable;
 import javax.swing.*;
-import pkUpdate.Updater;
-import java.io.IOException;
+import pkUpdater.*;
+import java.io.*;
 import java.util.*;
 
 /* Changelog
@@ -9,27 +9,21 @@ import java.util.*;
  * 0.2 : Optimized code.
  * 0.3 : More Letters, Fewer Letters, Latin Japanese and Japanese generator.
  * 1.0.0 : Auto Updater
+ * 1.0.1 : Infinite Loop
+ * 1.0.2 : Minimum 3 letters
+ * 1.0.3 : Cherokee
+ * TODO : No more global
  */
 
 public class Syllable {
 
 	// Variables
 	final static String PROJECTNAME = "Syllable";
-	final static String VERSION = "1.0.0";
+	final static String VERSION = "1.0.3";
 	static Random r = new Random();
-	static String word = "";
-
-	// Add a letter
-	private static boolean add(char[] LETTERS) {
-		if (r.nextInt(2) == 0) { 
-			word += LETTERS[r.nextInt(LETTERS.length)];
-			return true;
-		}
-		else return false;
-	}
-
+	
 	// Create a syllable
-	private static void syllabe(String type) {
+	private static String syllabe(String type) {
 		// Variables
 		final char[] VOWELS = {'a', 'e', 'i', 'o', 'u', 'y'};
 		final char[] CONSONANTS = {'b', 'c', 'd', 'f', 'g', 'h',
@@ -40,54 +34,118 @@ public class Syllable {
 				"u", "ku", "su", "tsu", "nu", "fu", "mu", "yu", "ru",
 				"e", "ke", "se", "te", "ne", "he", "me", "re", "we",
 				"o", "ko", "so", "to", "no", "ho", "mo", "yo", "ro", "wo"};
+		final String[] CHEROKEE = {
+				"a", "ga", "ka", "ha", "la", "ma", "na", "hna", "nah", "qua", "s", "sa", "da", "ta", "dla", "tla", "tsa", "wa", "ya",
+				"e", "ge", "he", "le", "me", "ne", "que", "se", "de", "te", "tle", "tse", "we", "ye",
+				"i", "gi", "hi", "li", "mi", "ni", "qui", "si", "di", "ti", "tli", "tsi", "wi", "yi",
+				"o", "go", "ho", "lo", "mo", "no", "quo", "so", "do", "tlo", "tso", "wo", "yo",
+				"u", "gu", "hu", "lu", "mu", "nu", "quu", "su", "du", "tlu", "tsu", "wu", "yu",
+				"\u01DD\u0303", "g\u01DD\u0303", "h\u01DD\u0303", "l\u01DD\u0303", "m\u01DD\u0303", "n\u01DD\u0303", "qu\u01DD\u0303", "s\u01DD\u0303", "d\u01DD\u0303", "tl\u01DD\u0303", "ts\u01DD\u0303", "w\u01DD\u0303", "y\u01DD\u0303"
+		};
+
+		String s = "";
 
 		// Totally Random
 		if (type.equals("More Letters")) {
-			if (add(CONSONANTS)) add(CONSONANTS);
-			word += VOWELS[r.nextInt(VOWELS.length)];
-			if (add(VOWELS)) add(VOWELS);
-			if (add(CONSONANTS)) add(CONSONANTS);
+
+			// Step 1
+			if (r.nextInt(2) == 0) { 
+				s += CONSONANTS[r.nextInt(CONSONANTS.length)];
+				if (r.nextInt(2) == 0) s += CONSONANTS[r.nextInt(CONSONANTS.length)];
+			}
+
+			// Step 2
+			s += VOWELS[r.nextInt(VOWELS.length)];
+			if (r.nextInt(2) == 0) s += VOWELS[r.nextInt(VOWELS.length)];
+
+			// Step 3
+			if (r.nextInt(2) == 0) { 
+				s += CONSONANTS[r.nextInt(CONSONANTS.length)];
+				if (r.nextInt(2) == 0) s += CONSONANTS[r.nextInt(CONSONANTS.length)];
+			}
 		}
 
 		// Fewer letters
 		else if(type.equals("Fewer Letters")) {
-			add(CONSONANTS);
-			word += VOWELS[r.nextInt(VOWELS.length)];
-			add(VOWELS);
-			add(CONSONANTS);
+			if (r.nextInt(2) == 0) s += CONSONANTS[r.nextInt(CONSONANTS.length)];
+			s += VOWELS[r.nextInt(VOWELS.length)];
+			if (r.nextInt(2) == 0) s += VOWELS[r.nextInt(VOWELS.length)];
+			if (r.nextInt(2) == 0) s += CONSONANTS[r.nextInt(CONSONANTS.length)];
 		}
 
 		// Latin Japanese
 		else if(type.equals("Latin Japanese")) {
-			word += CONSONANTS[r.nextInt(CONSONANTS.length)];
-			word += VOWELS[r.nextInt(VOWELS.length)];
+			s += VOWELS[r.nextInt(VOWELS.length)];
+			s += CONSONANTS[r.nextInt(CONSONANTS.length)];
 		}
 
 		// Japanese
 		else if(type.equals("Japanese")) {
-			word += JAPANESE[r.nextInt(JAPANESE.length)];
+			s += JAPANESE[r.nextInt(JAPANESE.length)];
 		}
+
+		// Cherokee
+		else if(type.equals("Cherokee")) {
+			s += CHEROKEE[r.nextInt(CHEROKEE.length)];
+		}
+
+		return s;
 	}
 
 	// Create a word
-	private static void word(String type) {
-		syllabe(type);
-		while(r.nextInt(2) == 0) syllabe(type);
+	private static String word(String type) {
+		String w = syllabe(type);
+		while(r.nextInt(2) == 0) w += syllabe(type);
+		while(w.length() < 3) w += syllabe(type);
+		return w;
 	}
 
 	// Create a sentence
-	private static void sentence(String type) {
-		word(type);
+	private static String sentence(String type) {
+		String s = word(type);
 		while(r.nextInt(2) == 0) {
-			word += " ";
-			word(type);
+			s += " ";
+			s += word(type);
 		}
+		return s;
+	}
+
+	// Create a paragraph
+	private static String paragraph(String type) {
+		String p = sentence(type);
+		while(r.nextInt(2) == 0) {
+			p += "\n";
+			p += sentence(type);
+		}
+		return p;
+	}
+
+	// Create a page
+	private static String page(String type) {
+		String p = paragraph(type);
+		while(r.nextInt(2) == 0) {
+			p += "\n\n";
+			p += paragraph(type);
+		}
+		return p;
 	}
 
 	public static void main(String[] args) throws IOException {
+
+		// Updater
 		Updater.update(PROJECTNAME, VERSION);
-		final String[] OPTIONS = {"More Letters", "Fewer Letters", "Latin Japanese", "Japanese"};
-		sentence((String) JOptionPane.showInputDialog(null, "Which generator do you want?", PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE, null, OPTIONS, null));
-		JOptionPane.showMessageDialog(null, "The created word is : " + word, PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE);
+
+		// Options
+		final String[] OPTIONS = {"More Letters", "Fewer Letters", "Latin Japanese", "Japanese", "Cherokee"};
+
+		while(true) {
+			try {
+				// Menu
+				String MESSAGE = page((String) JOptionPane.showInputDialog(null, "Which generator do you want?", PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE, null, OPTIONS, OPTIONS[1]));
+				JOptionPane.showMessageDialog(null, "The created page is :\n\n" + MESSAGE, PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE);
+			} catch (Exception e) {
+				System.exit(0);
+			}
+		}
 	}
 }
