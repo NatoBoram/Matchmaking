@@ -426,6 +426,94 @@ function OnDash(object, spellProc)
 		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
 	elseif myHero.charName == "Corki" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 880 then
 		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Corki" and myHero:CanUseSpell(SPELL_4) == READY and myHero:GetDistance(spellProc.endPos) < 1225 then
+		CastSpell(SPELL_4, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Darius" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 550 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 200 then
+		CastSpell(SPELL_2)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 350 then
+		CastSpell(SPELL_3)
+	elseif myHero.charName == "Diana" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 830 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "DrMundo" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Draven" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1050 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ekko" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1075 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ezreal" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Ezreal" and myHero:CanUseSpell(SPELL_q) == READY and myHero:GetDistance(spellProc.endPos) < 1150 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Galio" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 940 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Galio" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1180 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Gnar" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1100 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Graves" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Graves" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Heimerdinger" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 925 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Heimerdinger" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1100 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Illaoi" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 800 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Illaoi" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Jhin" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 750 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Jhin" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 3000 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Jinx" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Jinx" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1500 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Kalista" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1150 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Karma" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Karthus" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 875 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Kennen" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1050 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "KhaZix" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "KogMaw" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1175 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "KogMaw" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1280 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "KogMaw" and myHero:CanUseSpell(SPELL_4) == READY and myHero:GetDistance(spellProc.endPos) < 1200 then
+		CastSpell(SPELL_4, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Leblanc" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 950 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Lissandra" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 825 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Lucian" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Lulu" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 925 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Lux" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1175 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Malzahar" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Malzahar" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Maokai" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 600 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Maokai" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1100 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "MissFortune" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 1000 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Mordekaiser" and myHero:CanUseSpell(SPELL_3) == READY and myHero:GetDistance(spellProc.endPos) < 675 then
+		CastSpell(SPELL_3, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Morgana" and myHero:CanUseSpell(SPELL_2) == READY and myHero:GetDistance(spellProc.endPos) < 900 then
+		CastSpell(SPELL_2, spellProc.endPos.x, spellProc.endPos.z)
+	elseif myHero.charName == "Morgana" and myHero:CanUseSpell(SPELL_1) == READY and myHero:GetDistance(spellProc.endPos) < 1175 then
+		CastSpell(SPELL_1, spellProc.endPos.x, spellProc.endPos.z)
 	-- http://leagueoflegends.wikia.com/wiki/List_of_champions
 	end
 end
