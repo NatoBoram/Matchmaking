@@ -4,51 +4,26 @@ echo Installation des premiers logiciels sur un nouvel appareil.
 pause
 
 echo Mozilla
-start "Firefox" "https://www.mozilla.org/en-US/firefox/all/?q=French, Français"
+start "Firefox" "https://www.mozilla.org/en-US/firefox/all/#fr"
 pause
 
-echo AdBlockPlus
+echo Drivers
 start firefox
 start /wait /min ping 127.0.0.1 -n %x%
 start "AdBlock Plus" "https://adblockplus.org/"
 start "Element Hide Helper" "https://adblockplus.org/elemhidehelper"
-pause
-
-echo Microsoft
-start firefox
-start /wait /min ping 127.0.0.1 -n %x%
 start "DirectX" "https://www.microsoft.com/fr-ca/download/confirmation.aspx?id=35"
 start "Visual C++" "http://www.microsoft.com/en-us/download/details.aspx?id=30679"
-start "Microsoft .NET Framework" "http://www.microsoft.com/fr-ca/download/details.aspx?id=44928"
 start "Silverlight" "http://www.microsoft.com/silverlight/"
-pause
-
-echo Adobe
-start firefox
-start /wait /min ping 127.0.0.1 -n %x%
 start "Adobe Reader" "https://get.adobe.com/fr/reader/"
 start "Adobe Flash Player" "https://get.adobe.com/fr/flashplayer/"
 start "Adobe Air" "https://get.adobe.com/fr/air/"
 start "Adobe Shockwave" "https://get.adobe.com/fr/shockwave/"
-pause
-
-echo Java
-start firefox
-start /wait /min ping 127.0.0.1 -n %x%
 start "Java" "http://java.com/fr/download/manual.jsp"
-pause
-
-echo Apple
-start firefox
-start /wait /min ping 127.0.0.1 -n %x%
 start "QuickTime" "http://www.apple.com/quicktime/download/"
-pause
-
-echo Web Plugin
-start firefox
-start /wait /min ping 127.0.0.1 -n %x%
 start "Skupe Web Plugin" "https://skypewebexperience.skype.com/content/3-14-1793/plugin_installation.html"
 start "Hangouts Web Plugin" "https://www.google.com/tools/dlpage/hangoutplugin/"
+start "Noto Font" "https://www.google.com/get/noto/"
 pause
 
 echo Applications
@@ -63,25 +38,21 @@ start "Gimp" "http://www.gimp.org/downloads/"
 start "iTunes" "http://www.apple.com/itunes/download/"
 start "KeyFinder" "https://www.magicaljellybean.com/keyfinder/"
 start "LibreOffice" "http://www.libreoffice.org/download/libreoffice-fresh/?type=win-x86_64&lang=fr"
-start "Notepad++" "https://notepad-plus-plus.org/"
-start "Noto Font" "https://www.google.com/get/noto/"
-start "PDF Architect" "http://www.pdfforge.org/pdfarchitect"
-start "PDF Creator" "http://www.pdfforge.org/pdfcreator"
+start "Notepad++" "https://notepad-plus-plus.org/download/"
 start "Skype" "http://www.skype.com/fr/download-skype/skype-for-computer/"
 start "TeamViewer" 	"https://www.teamviewer.com/"
 start "VLC Media Player" "http://www.videolan.org/vlc/download-windows.html"
-start "WinRAR" "http://www.win-rar.com/predownload.html?&Version=64bit"
 start "7-Zip" "http://www.7-zip.org/"
 pause
 
 echo Games
 start firefox
 start /wait /min ping 127.0.0.1 -n %x%
-start "Battle.net" "https://us.battle.net/account/download/"
 start "Cheat Engine" "http://www.cheatengine.org/"
+start "Discord" "https://discordapp.com/download"
 start "GeForce Experience" "http://www.geforce.com/geforce-experience" 
+start "Guild Wars 2" "https://account.arena.net/content"
 start "League of Legends" "http://na.leagueoflegends.com/"
-start "LoL Updater" "https://lolupdater.com/?p=download"
 start "Minecraft" "https://minecraft.net/download"
 start "Steam" "http://store.steampowered.com/about/"
 start "SystemRequirementsLab" "http://www.systemrequirementslab.com/cyri"
@@ -103,6 +74,7 @@ start "SQL Developer" "http://www.oracle.com/technetwork/developer-tools/sql-dev
 start "Super Macro" "http://adam.denadai.free.fr/index.php?page=Download"
 start "TCP Optimizer" "http://www.speedguide.net/downloads.php"
 start "VirtualBox" "https://www.virtualbox.org/"
+start "Visual Studio" "https://www.visualstudio.com/"
 start "WampServer" "http://www.wampserver.com/"
 start "Wireshark" "https://www.wireshark.org/#download"
 pause
