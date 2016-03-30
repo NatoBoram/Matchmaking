@@ -5,7 +5,7 @@
  * Thanks to RedXVIII for his source code on Minecraft Forum.
  * http://www.minecraftforum.net/forums/support/server-support/1881587-java-rcon-for-minecraft
  * 
- * Thanks to SamLebarbare for his source code on Github.
+ * Thanks to SamLebarbare for his source code on GitHub.
  * https://github.com/SamLebarbare/minecraft-frontend/blob/master/app/rcon/MinecraftRcon.java
  */
 
