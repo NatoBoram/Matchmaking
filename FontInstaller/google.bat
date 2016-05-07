@@ -6,4 +6,6 @@ powershell Invoke-WebRequest -Uri https://codeload.github.com/google/fonts/zip/m
 
 move /Y *.ttf Fonts/
 
+del Noto-hinted.zip
+
 exit
