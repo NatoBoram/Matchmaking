@@ -39,7 +39,7 @@ start "KeyFinder" "https://www.magicaljellybean.com/keyfinder/"
 start "LibreOffice" "http://www.libreoffice.org/download/libreoffice-fresh/?type=win-x86_64&lang=fr"
 start "Notepad++" "https://notepad-plus-plus.org/download/"
 start "Skype" "http://www.skype.com/fr/download-skype/skype-for-computer/"
-start "TeamViewer" 	"https://www.teamviewer.com/"
+start "TeamViewer" "https://www.teamviewer.com/"
 start "VLC Media Player" "http://www.videolan.org/vlc/download-windows.html"
 pause
 
