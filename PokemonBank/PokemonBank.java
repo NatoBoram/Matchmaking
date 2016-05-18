@@ -1,9 +1,10 @@
-package pkPokemonBank;
-import pkUpdate.*;
-import java.io.*;
-import javax.swing.*;
+package pkPokémonBank;
+import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pkUpdater.Updater;
 
-public class PokemonBank {
+public class PokémonBank {
 
 	// Variables
 	final static String PROJECTNAME = "PokemonBank";
@@ -37,10 +38,6 @@ public class PokemonBank {
 	}
 
 	public static void main(String[] args) throws IOException {
-
-		// Update
-		Updater.update(PROJECTNAME, VERSION);
-
 		// JFrame
 		JFrame menu = new JFrame("Pokémon Bank");
 		menu.setUndecorated(true);
@@ -91,13 +88,13 @@ public class PokemonBank {
 					&& iv.toCharArray()[9] == '\u2605'
 					&& iv.toCharArray()[10] == '\u25C6') iv += "\nHoly shit! A Perfect Pokémon!";
 			if (iv.equals("\n    \u25CB\u25B3\u25A1\u2661\u2606\u25C7")) iv = "";
-			
-			String sid = JOptionPane.showInputDialog(menu, "What is the Pokémon's Pokédex Number?" + iv,
-					"Pokémon Bank " + VERSION, JOptionPane.PLAIN_MESSAGE);
+
+			String sid = JOptionPane.showInputDialog(menu, "What is the Pokémon's Pokédex Number?" + iv, "Pokémon Bank " + VERSION, JOptionPane.PLAIN_MESSAGE);
 
 			try {
 				if (sid == null || Integer.parseInt(sid) < 1) {
 					menu.dispose();
+					Updater.update(PROJECTNAME, VERSION);
 					System.exit(0);
 				}
 
@@ -110,11 +107,11 @@ public class PokemonBank {
 						continue;
 					}
 				}
-				
+
 				JOptionPane.showMessageDialog(menu, "The Pokémon #" + id + " goes to box " + getBox(id) + " (" + getX(getPos(id)) + ", " + getY(getPos(id)) + ").",
 						"Pokémon Bank", JOptionPane.PLAIN_MESSAGE);
 			}
-			
+
 			catch (Throwable e) {
 				JOptionPane.showMessageDialog(menu, "Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
 			}
