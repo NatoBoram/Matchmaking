@@ -1,17 +1,20 @@
 package pkSyllable;
-import javax.swing.*;
-import pkUpdater.*;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.Random;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pkUpdater.Updater;
 
 /* Changelog
- * 0.1 : Syllable created.
- * 0.2 : Optimized code.
- * 0.3 : More Letters, Fewer Letters, Latin Japanese and Japanese generator.
+ * 0.0.1 : Syllable created.
+ * 0.0.2 : Optimized code.
+ * 0.0.3 : More Letters, Fewer Letters, Latin Japanese and Japanese generator.
  * 1.0.0 : Auto Updater
  * 1.0.1 : Infinite Loop
  * 1.0.2 : Minimum 3 letters
  * 1.0.3 : Cherokee
+ * 1.0.4 : JFrame
  * TODO : No more global
  */
 
@@ -19,7 +22,8 @@ public class Syllable {
 
 	// Variables
 	final static String PROJECTNAME = "Syllable";
-	final static String VERSION = "1.0.3";
+	final static String VERSION = "1.0.4";
+	static JFrame menu = new JFrame(PROJECTNAME);
 	static Random r = new Random();
 	
 	// Create a syllable
@@ -131,12 +135,10 @@ public class Syllable {
 	}
 
 	public static void main(String[] args) throws IOException {
-
-		// Updater
-		Updater.update(PROJECTNAME, VERSION);
-
-		// Options
 		final String[] OPTIONS = {"More Letters", "Fewer Letters", "Latin Japanese", "Japanese", "Cherokee"};
+		menu.setUndecorated(true);
+		menu.setLocationRelativeTo(null);
+		menu.setVisible(true);
 
 		while(true) {
 			try {
@@ -144,6 +146,8 @@ public class Syllable {
 				String MESSAGE = page((String) JOptionPane.showInputDialog(null, "Which generator do you want?", PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE, null, OPTIONS, OPTIONS[1]));
 				JOptionPane.showMessageDialog(null, "The created page is :\n\n" + MESSAGE, PROJECTNAME + " " + VERSION, JOptionPane.PLAIN_MESSAGE);
 			} catch (Exception e) {
+				menu.dispose();
+				Updater.update(PROJECTNAME, VERSION);
 				System.exit(0);
 			}
 		}
