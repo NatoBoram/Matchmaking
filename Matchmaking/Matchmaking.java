@@ -1,15 +1,24 @@
 package pkMatchmaking;
-import pkUpdate.*;
-import javax.swing.*;
-import java.io.*;
-import java.text.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pkUpdater.Updater;
 
 @SuppressWarnings("unchecked")
 public class Matchmaking {
 
 	final static String PROJECTNAME = "Matchmaking";
-	final static String VERSION = "1.2.2";
+	final static String VERSION = "1.2.3";
 	static JFrame menu = new JFrame(PROJECTNAME);
 	static DecimalFormat zeroDigits = new DecimalFormat ("0");
 	static DecimalFormat twoDigits = new DecimalFormat ("0.00");
@@ -18,17 +27,17 @@ public class Matchmaking {
 	// BLACK MAGIC 
 	static void read() {
 		try {
-			FileInputStream fileIn = new FileInputStream("C:/Nato/" + PROJECTNAME + "/friends.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			FriendList = (ArrayList<Friend>) in.readObject();
-			in.close();
-			fileIn.close();
-		} catch(IOException i) {
-			i.printStackTrace();
-			return;
-		} catch(ClassNotFoundException c) {
-			c.printStackTrace();
-			return;
+			FileInputStream fInput = new FileInputStream("C:/Nato/" + PROJECTNAME + "/friends.ser");
+			ObjectInputStream oInput = new ObjectInputStream(fInput);
+			FriendList = (ArrayList<Friend>) oInput.readObject();
+			oInput.close();
+			fInput.close();
+		} catch (FileNotFoundException e) {
+			write();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -36,12 +45,14 @@ public class Matchmaking {
 	static void write() {
 		Collections.sort(FriendList);
 		try {
-			FileOutputStream fileOut = new FileOutputStream("C:/Nato/" + PROJECTNAME + "/friends.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(FriendList);
-			out.close();
-			fileOut.close();
-		} catch(IOException i) {
+			FileOutputStream fOutput = new FileOutputStream("C:/Nato/" + PROJECTNAME + "/friends.ser");
+			ObjectOutputStream oOutput = new ObjectOutputStream(fOutput);
+			oOutput.writeObject(FriendList);
+			oOutput.close();
+			fOutput.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			new File("C:/Nato").mkdirs();
 			new File("C:/Nato/" + PROJECTNAME).mkdirs();
 		}
@@ -257,12 +268,12 @@ public class Matchmaking {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Updater.update(PROJECTNAME, VERSION);
 		menu.setUndecorated(true);
 		menu.setLocationRelativeTo(null);
 		menu.setVisible(true);
 		menu();
 		menu.dispose();
+		Updater.update(PROJECTNAME, VERSION);
 		System.exit(0);
 	}
 }

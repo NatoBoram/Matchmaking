@@ -1,8 +1,7 @@
 package pkMatchmaking;
+import java.io.Serializable;
 
-import java.io.*;
-
-@SuppressWarnings({ "serial" })
+@SuppressWarnings({"serial"})
 public class Friend implements Serializable, Comparable<Friend> {
 
 	String name;

@@ -1,7 +1,6 @@
 package pkSyllable;
 import java.io.IOException;
 import java.util.Random;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pkUpdater.Updater;

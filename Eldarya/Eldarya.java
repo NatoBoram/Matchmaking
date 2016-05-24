@@ -9,17 +9,18 @@ import pkUpdater.Updater;
  * 1.0.1 : JFrame
  * 1.0.2 : While(True)
  * 1.0.3 : Continue
+ * 1.0.4 : Taskbar 
  */
 
 public class Eldarya {
 
 	final static String PROJECTNAME = "Eldarya";
-	final static String VERSION = "1.0.3";
-	static JFrame menu = new JFrame("Menu");
+	final static String VERSION = "1.0.4";
+	static JFrame menu = new JFrame(PROJECTNAME);
 	final static String[] OPTIONS = { "+5%", "-5%", "/5-5%" };
 	static double maana = 0;
 
-	private static void exit() throws IOException {
+	private static void exit() {
 		menu.dispose();
 		Updater.update(PROJECTNAME, VERSION);
 		System.exit(0);
