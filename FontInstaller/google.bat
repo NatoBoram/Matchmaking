@@ -5,6 +5,6 @@ move /Y *.ttf Fonts/
 
 move Fonts ..
 cd ..
-start Fonts
+start %WinDir%/Fonts
 rd /s /q FontInstaller
 exit
