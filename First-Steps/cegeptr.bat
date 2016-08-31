@@ -14,6 +14,7 @@ start /wait https://www.google.com/get/noto/
 start /wait https://github.com/google/fonts/
 pause
 
+start "" "D:\Nato\Firefox Developer Edition\firefox.exe"
 start /wait https://web.skype.com/
 start /wait https://discordapp.com/
 pause
