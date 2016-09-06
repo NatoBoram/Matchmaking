@@ -33,16 +33,17 @@ for /f "tokens=1,2,3*" %%i in ('netsh int show interface') do (
 		netsh int ipv6 add dns name="%%l" %DNS4% index=2 validate=no
 	)
 )
-
 ipconfig /release
 ipconfig /flushdns
 ipconfig /renew
 
-start wuauclt /resetauthorization /detectnow /updatenow
-defrag /c /h /u
+mkdir C:\Windows10Upgrade\
+del C:\Windows10Upgrade\Windows10Upgrade.exe
+powershell Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?LinkID=799445 -Destination C:\Windows10Upgrade\Windows10Upgrade.exe
+wuauclt /resetauthorization
+start C:\Windows10Upgrade\Windows10Upgrade.exe
 
-net start w32time
-w32tm /resync
+defrag /c /h /u
 
 dism /online /cleanup-image /restorehealth
 sfc /scannow
