@@ -25,7 +25,7 @@ start /wait mdsched
 
 echo Press "Y" then "Enter".
 start /wait /min ping 127.0.0.1
-start /wait chkdsk c: /r
+start /wait chkdsk c: /v /r
 
 echo Cick on "Start", then "Ok", then "X".
 start /wait /min ping 127.0.0.1
