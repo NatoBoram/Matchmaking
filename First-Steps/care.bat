@@ -20,9 +20,22 @@ start /wait cleanmgr /d c:
 echo Congratulation! Now, let this window run in the background. Do not shutdown the computer.
 start /wait /min ping 127.0.0.1
 
-start wuauclt /resetauthorization /detectnow /updatenow
-start ipconfig /registerdns
+REM http://stackoverflow.com/a/28262761/5083247
+set DNS1=8.8.8.8
+set DNS2=8.8.4.4
+for /f "tokens=1,2,3*" %%i in ('netsh int show interface') do (
+	if %%i equ Enabled (
+		echo Changing "%%l" : %DNS1% + %DNS2%
+		netsh int ipv4 set dns name="%%l" static %DNS1% primary validate=no
+		netsh int ipv4 add dns name="%%l" %DNS2% index=2 validate=no
+	)
+)
 
+ipconfig /release
+ipconfig /flushdns
+ipconfig /renew
+
+start wuauclt /resetauthorization /detectnow /updatenow
 defrag /c /h /u
 
 net start w32time
