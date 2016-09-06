@@ -13,6 +13,10 @@ echo Cick on "Start", then "Ok", then "X".
 start /wait /min ping 127.0.0.1
 start /wait sigverif
 
+echo Check everything, then click on "Ok", then "Delete Files".
+start /wait /min ping 127.0.0.1
+start /wait cleanmgr /d c:
+
 echo Congratulation! Now, let this window run in the background. Do not shutdown the computer.
 start /wait /min ping 127.0.0.1
 
@@ -30,3 +34,4 @@ dism /online /cleanup-image /spsuperseded /hidesp
 dism /online /cleanup-image /startcomponentcleanup /resetbase
 
 shutdown /r
+exit
