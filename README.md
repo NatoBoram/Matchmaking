@@ -28,11 +28,8 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 2. Run [7-Zip](http://7-zip.org/)
 
 ### How to install [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/)
-1. Download [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/)
-2. Extract to C:\Windows\System32\WindowsPowerShell\v1.0\Modules
-3. Run Windows PowerShell
-4. Set-ExecutionPolicy Unrestricted
-5. Import-Module PSWindowsUpdate
+1. Press [Windows] + [R]
+2. PowerShell Install-Module -Name PSWindowsUpdate
 
 ## Attributions
 [Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Java](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
