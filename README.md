@@ -2,7 +2,7 @@
 Updates my java programs.
 
 ## Before
-Some projects requires specific software in order to run. Before running any program, please install [Java](http://www.java.com/en/download/manual.jsp) and [Git for Windows](https://git-for-windows.github.io/).
+Some projects requires specific software in order to run. Before running any program, please install [Java](http://www.java.com/), [Git for Windows](https://git-for-windows.github.io/), [7-Zip](http://7-zip.org/) and [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/).
 
 ### How to install [Java](http://www.java.com/en/download/manual.jsp)
 This guide shows how to install [Java](http://www.java.com/en/download/manual.jsp) in order to use it quickly. If you didn't use these steps during your installation, it is recommended that you reinstall it because some of these steps are mendatory for this auto updater. To begin, download [Windows Offline](http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207773) and [Windows Offline (64-bit)](http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207775).
@@ -10,8 +10,8 @@ This guide shows how to install [Java](http://www.java.com/en/download/manual.js
 ![1](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Java/1.PNG)
 ![2](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Java/2.PNG)
 
-### How to Install [Git for Windows](https://git-for-windows.github.io/)
-This guide shows how to install [Git for Windows](https://git-for-windows.github.io/) in order to use its maximum potency. If you didn't use these options during your installation, it is recommended that you reinstall it because some of these options are mendatory for this auto updater.
+### How to install [Git for Windows](https://git-for-windows.github.io/)
+This guide shows how to install [Git for Windows](https://git-for-windows.github.io/) in order to use its maximum potency. If you didn't use these options during your installation, it is recommended that you reinstall it because some of these options are mendatory.
 
 ![1](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Git/1.PNG)
 ![2](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Git/2.PNG)
@@ -23,5 +23,16 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 ![8](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Git/8.PNG)
 ![9](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Git/9.PNG)
 
+### How to install [7-Zip](http://7-zip.org/)
+1. Download [7-Zip](http://7-zip.org/)
+2. Run [7-Zip](http://7-zip.org/)
+
+### How to install [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/)
+1. Download [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/)
+2. Extract to C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+3. Run Windows PowerShell
+4. Set-ExecutionPolicy Unrestricted
+5. Import-Module PSWindowsUpdate
+
 ## Attributions
-[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Java](http://www.java.com) | [Semantic Versionning](http://semver.org/)
+[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Java](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
