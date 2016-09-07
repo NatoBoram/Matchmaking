@@ -27,7 +27,7 @@ echo Press "Y" then "Enter".
 start /wait /min ping 127.0.0.1
 start /wait chkdsk c: /v /r
 
-echo Cick on "Start", then "Ok", then "X".
+echo Cick on "Start", then "Ok", then "Close".
 start /wait /min ping 127.0.0.1
 start /wait sigverif
 
