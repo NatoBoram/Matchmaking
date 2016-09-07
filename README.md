@@ -34,4 +34,4 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 4. Get-WUInstall
 
 ## Attributions
-[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Java](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
+[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Oracle](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
