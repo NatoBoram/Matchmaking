@@ -79,4 +79,3 @@ start "Wireshark" "https://www.wireshark.org/#download"
 pause
 
 del C:\Nato\install.bat
-exit
