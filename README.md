@@ -24,12 +24,14 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 ![9](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/Git/9.PNG)
 
 ### How to install [7-Zip](http://7-zip.org/)
-1. Download [7-Zip](http://7-zip.org/)
-2. Run [7-Zip](http://7-zip.org/)
+![1](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/7-Zip/1.PNG)
+![2](https://raw.githubusercontent.com/NatoBoram/Update/master/HowTo/7-Zip/2.PNG)
 
 ### How to install [PSWindowsUpdate](https://www.powershellgallery.com/packages/PSWindowsUpdate/)
-1. Press [Windows] + [R]
-2. PowerShell Install-Module -Name PSWindowsUpdate
+1. Open Windows PowerShell as Administrator
+2. Set-ExecutionPolicy Unrestricted
+3. Install-Module -Name PSWindowsUpdate -Force
+4. Get-WUInstall
 
 ## Attributions
 [Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Java](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
