@@ -14,9 +14,14 @@ for /f "tokens=1,2,3*" %%i in ('netsh int show interface') do (
 		netsh int ipv6 add dns name="%%l" %DNS4% index=2 validate=no
 	)
 )
+
 ipconfig /release
 ipconfig /flushdns
 ipconfig /renew
+
+net start w32time
+w32tm /resync
+
 cls
 
 echo Click on "Check for problems the next time I start my computer".
