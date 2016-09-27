@@ -32,7 +32,7 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 2. Set-ExecutionPolicy Unrestricted
 3. Install-PackageProvider -Name NuGet -Force
 4. Install-Module -Name PSWindowsUpdate -Force
-5. Get-WUInstall -MicrosoftUpdate -AcceptAll -AutoReboot
+5. Get-WUInstall -MicrosoftUpdate -AcceptAll -AutoReboot -Verbose
 
 ## Attributions
 [Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Oracle](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
