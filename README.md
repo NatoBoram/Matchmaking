@@ -36,4 +36,4 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 6. Get-WUInstall -MicrosoftUpdate -AcceptAll -AutoReboot -Verbose
 
 ## Attributions
-[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Oracle](http://www.java.com) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Semantic Versionning](http://semver.org/)
+[Free Software Foundation](http://www.gnu.org/licenses/gpl) | [Git for Windows](https://git-for-windows.github.io/) | [Igor Pavlov](http://7-zip.org/) | [Michal Gajda](https://www.powershellgallery.com/packages/PSWindowsUpdate/) | [Oracle](http://www.java.com) | [Semantic Versionning](http://semver.org/)
