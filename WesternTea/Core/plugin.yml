@@ -1,0 +1,4 @@
+name: WesternTea
+main: com.natoboram.westerntea.Core
+version: 1.0.0
+commands:
