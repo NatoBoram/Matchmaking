@@ -1,0 +1,4 @@
+name: WesternTeaBooks
+main: com.natoboram.westerntea.Books
+version: 1.0.0
+commands:
