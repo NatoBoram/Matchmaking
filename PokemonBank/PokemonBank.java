@@ -8,7 +8,7 @@ public class PokémonBank {
 
 	// Variables
 	final static String PROJECTNAME = "PokemonBank";
-	final static String VERSION = "1.2.7";
+	final static String VERSION = "1.2.8";
 
 	// Get box number
 	private static int getBox(int id) {
@@ -100,7 +100,7 @@ public class PokémonBank {
 
 				int id = Integer.parseInt(sid);
 
-				if (id > 721) {
+				if (id > 802) {
 					String[] options = {"Wynaut?", "Oops!"};
 					if (JOptionPane.showOptionDialog(menu, "Exploring random numbers, aren't we?",
 							"Pokémon Bank", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, options, options[0]) == 1) {
