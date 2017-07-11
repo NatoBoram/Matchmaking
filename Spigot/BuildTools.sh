@@ -11,6 +11,6 @@ You should have received a copy of the GNU General Public License along with thi
 "
 curl -o BuildTools.jar --progress-bar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar
 curl -o BungeeCord.jar --progress-bar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/bootstrap/target/BungeeCord.jar
-java -d64 -jar BuildTools.jar --rev latest
+java -jar BuildTools.jar
 curl -o BuildTools.sh --progress-bar https://raw.githubusercontent.com/SpigotMCUpdater/SpigotMC-Updater/master/BuildTools.sh
 exit
